@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+const db = require("../db/db");
 
 dotenv.config();
 

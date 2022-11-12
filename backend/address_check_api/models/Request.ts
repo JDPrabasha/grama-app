@@ -5,6 +5,8 @@ enum Status {
   Pending = "PENDING",
   Confirmed = "CONFIRMED",
   Rejected = "REJECTED",
+  Processing = "PROCESSING",
+  MissingInfo = "MISSING_INFO",
 }
 
 const requestSchema = new Schema({
@@ -21,5 +23,11 @@ const requestSchema = new Schema({
   },
   status: {
     enum: Status,
+    default: Status.Pending,
+  },
+  date: {
+    type: Date,
   },
 });
+
+module.exports = mongoose.model("Request", requestSchema);
