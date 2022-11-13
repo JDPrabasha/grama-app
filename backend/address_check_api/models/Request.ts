@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 enum Status {
-  Pending = "PENDING",
-  Confirmed = "CONFIRMED",
-  Rejected = "REJECTED",
-  Processing = "PROCESSING",
-  MissingInfo = "MISSING_INFO",
+  PENDING = "Pending",
+  CONFIRMED = "Confirmed",
+  REJECTED = "Rejected",
+  PROCESSING = "Processing",
+  MISSING_INFO = "Missing Info",
 }
 
 const requestSchema = new Schema({
@@ -22,12 +22,16 @@ const requestSchema = new Schema({
     required: true,
   },
   status: {
-    enum: Status,
-    default: Status.Pending,
+    type: String,
+    enum: Object.values(Status),
+    default: Status.PENDING,
   },
-  date: {
+  lastApprovalDate: {
     type: Date,
   },
+
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Request", requestSchema);

@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 var Status;
 (function (Status) {
-    Status["Pending"] = "PENDING";
-    Status["Confirmed"] = "CONFIRMED";
-    Status["Rejected"] = "REJECTED";
-    Status["Processing"] = "PROCESSING";
-    Status["MissingInfo"] = "MISSING_INFO";
+    Status["PENDING"] = "Pending";
+    Status["CONFIRMED"] = "Confirmed";
+    Status["REJECTED"] = "Rejected";
+    Status["PROCESSING"] = "Processing";
+    Status["MISSING_INFO"] = "Missing Info";
 })(Status || (Status = {}));
 const requestSchema = new Schema({
     proof: {
@@ -22,11 +22,14 @@ const requestSchema = new Schema({
         required: true,
     },
     status: {
-        enum: Status,
-        default: Status.Pending,
+        type: String,
+        enum: Object.values(Status),
+        default: Status.PENDING,
     },
-    date: {
+    lastApprovalDate: {
         type: Date,
     },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
 });
 module.exports = mongoose.model("Request", requestSchema);
