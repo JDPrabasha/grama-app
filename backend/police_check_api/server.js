@@ -10,20 +10,8 @@ app.use(cookieParser())
 app.use(cors())
 
 
-//Routes
-// app.use('/user', require('./routes/userRouter'))
-// app.use('/api', require('./routes/categoryRouter'))
-// app.use('/api', require('./routes/upload'))
-// app.use('/api', require('./routes/productRouter'))
-// app.use('/api', require('./routes/paymentRouter'))
-
-
-//connect to mongodb
-
 const URI = process.env.MONGODB_URL
 mongoose.connect(URI, {
-    //useCreateIndex: true,
-    //useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, err => {
@@ -32,19 +20,6 @@ mongoose.connect(URI, {
 })
 
 app.use('/', require('./route/policeCheckRoute'))
-
-
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static('client/build'))
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-//     })
-//}
-
-
-// app.get('/', (req, res) =>{
-//     res.json({msg: "Welcome to home screen"})
-// })
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
