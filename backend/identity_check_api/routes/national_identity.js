@@ -1,16 +1,16 @@
 const express = require('express');
-const Nic = require('../models/Nic');
+const Citizen = require('../models/Citizen');
 const Joi = require('@hapi/joi');
 const router = express.Router();
 
 //validation schema
 const idSchema = Joi.object().keys({
-    nicNumber: Joi.string().regex(/^([0-9]{9}[X|V]|[0-9]{12}|([N|D]|[OL]{2})[0-9]{7})$/).required()
+    nicNumber: Joi.string().regex(/^([0-9]{9}[x|X|v|V]|[0-9]{12}|([N|D]|[OL]{2})[0-9]{7})$/).required()
 });
 
 router.get('/', async (req,res) => {
     try{
-        const nics = await Nic.find();
+        const nics = await Citizen.find();
         res.json(nics);
     }catch{
         res.json({message:err});
@@ -19,7 +19,7 @@ router.get('/', async (req,res) => {
 
 //submit a nic
 router.post('/',async (req,res) => {
-    const nic = new Nic({
+    const nic = new Citizen({
         fullName:req.body.fullName, 
         nic:req.body.nic, 
         passport:req.body.passport, 
@@ -52,7 +52,7 @@ router.get('/:nicNumber', async (req,res) => {
         return res.status(400).json(result.error);
     }else{
         try{
-            const nic = await Nic.find( { $or: [ { nic: req.params.nicNumber }, { passport : req.params.nicNumber } ] } );
+            const nic = await Citizen.find( { $or: [ { nic: req.params.nicNumber }, { passport : req.params.nicNumber } ] } );
             if(nic.length>0){
                 res.json(nic);
             }
