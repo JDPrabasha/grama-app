@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 import SideNav from "../components/sideNav";
 import UserDashboard from "../user_webapp/dashboard";
@@ -12,6 +12,9 @@ function users() {
     <>
       <SideNav index={0} />
 
+      <Route exact path="/user">
+        <Redirect to="/user/dashboard" />
+      </Route>
       <Route path="/user/dashboard" component={UserDashboard} />
       <Route path="/user/apply-certificate" component={ApplyCertificate} />
       <Route path="/user/status" component={CheckStatus} />

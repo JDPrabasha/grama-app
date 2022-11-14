@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import SideNav from "../components/sideNav";
 
 import AdminDashboard from "../admin_webapp/dashboard";
@@ -10,6 +10,9 @@ function admin() {
     <>
       <SideNav index={1} />
 
+      <Route exact path="/admin">
+        <Redirect to="/admin/dashboard" />
+      </Route>
       <Route path="/admin/dashboard" component={AdminDashboard} />
       <Route path="/admin/requests" component={AdminRequests} />
 
