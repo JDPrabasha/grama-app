@@ -11,7 +11,7 @@ app.use(cors())
 
 
 const URI = process.env.MONGODB_URL
-mongoose.connect(URI, {
+mongoose.connect('mongodb+srv://Barath:V6Zl6ckrAhlH39ov@cluster0.ydsy4qj.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, err => {
