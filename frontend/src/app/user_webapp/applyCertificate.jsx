@@ -69,26 +69,26 @@ function applyCertificate() {
               <input type="file" hidden />
             </Button>
           </Grid>
+
+          <Grid>
+            <Button
+              variant="outlined"
+              sx={{
+                mt: 6,
+                width: "17.5vw",
+                borderColor: "#09ad58",
+                color: "#09ad58",
+                ":hover": {
+                  borderColor: "#09914b",
+                  color: "#09ad58",
+                },
+              }}
+            >
+              Submit
+            </Button>
+          </Grid>
         </Grid>
       </Box>
-
-      <Grid>
-        <Button
-          variant="outlined"
-          sx={{
-            mt: 60,
-            width: "10vw",
-            borderColor: "#09ad58",
-            color: "#09ad58",
-            ":hover": {
-              borderColor: "#09914b",
-              color: "#09ad58",
-            },
-          }}
-        >
-          Submit
-        </Button>
-      </Grid>
     </>
   );
 }
