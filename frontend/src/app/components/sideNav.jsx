@@ -87,7 +87,7 @@ export default function PermanentDrawerLeft({ index }) {
                   disablePadding
                   sx={{
                     transition: "0.3s ease",
-                    height: "9vh",
+                    height: "8vh",
 
                     ":hover": {
                       backgroundColor: "#09ad58",
@@ -103,7 +103,6 @@ export default function PermanentDrawerLeft({ index }) {
                         fontWeight: 600,
                         fontFamily: "Segoe UI",
                         textDecoration: "none",
-                        // height: "50%",
                       }}
                     ></ListItemText>
                   </ListItemButton>

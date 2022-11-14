@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 import Home from "../homePage/Home";
 
@@ -17,11 +17,13 @@ import AdminRequests from "../admin_webapp/requests";
 
 function AppRoute() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/user" component={Users} />
+        <Route path="/admin" component={Admin} />
 
-      <Route path="/user" element={<Users />}>
-        <Route index element={<Navigate to={"dashboard"} replace />} />
+        {/* <Route path="/user" element={<Users />}>
         <Route path="dashboard" element={<UserDashboard />} />
         <Route path="apply-certificate" element={<ApplyCertificate />} />
         <Route path="status" element={<CheckStatus />} />
@@ -29,11 +31,11 @@ function AppRoute() {
       </Route>
 
       <Route path="/admin" element={<Admin />}>
-        <Route index element={<Navigate to={"dashboard"} replace />} />
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="requests" element={<AdminRequests />} />
-      </Route>
-    </Routes>
+      </Route> */}
+      </Switch>
+    </BrowserRouter>
   );
 }
 
