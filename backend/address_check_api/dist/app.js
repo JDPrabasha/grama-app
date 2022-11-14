@@ -24,12 +24,66 @@ const port = process.env.PORT || 8000;
 app.get("/", (req, res) => {
     res.send("Express + TypeScript Server");
 });
+app.put("/process/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const nic = req.params.nic;
+        yield request.findOneAndUpdate({ nic: nic }, { status: "Processing", updatedAt: Date.now() });
+        res.status(201).send("Set to Processing");
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}));
+app.put("/policeVerify/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const nic = req.params.nic;
+        yield request.findOneAndUpdate({ nic: nic }, { status: "Confirmed", updatedAt: Date.now(), policeVerification: true });
+        res.status(201).send("Set to Confirmed");
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}));
+app.put("/confirm/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const nic = req.params.nic;
+        yield request.findOneAndUpdate({ nic: nic }, {
+            status: "Confirmed",
+            updatedAt: Date.now(),
+            lastApprovalDate: Date.now(),
+        });
+        res.status(201).send("Set to Confirmed");
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}));
+app.put("/missing/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const nic = req.params.nic;
+        yield request.findOneAndUpdate({ nic: nic }, { status: "Missing Info", updatedAt: Date.now() });
+        res.status(201).send("Set to Missing Info");
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}));
 app.put("/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const nic = req.params.nic;
         const proof = req.body.proof;
         yield request.findOneAndUpdate({ nic: nic }, { proof: proof, status: "Processing", updatedAt: Date.now() });
         res.status(201).send("Proof updated");
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+}));
+app.get("/status/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const nic = req.params.nic;
+        const result = yield request.findOne({ nic: nic }, { nic: 1, status: 1, policeVerification: 1, _id: 0 });
+        res.status(200).send(result);
     }
     catch (err) {
         res.status(500).send(err);

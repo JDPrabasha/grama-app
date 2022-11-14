@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const mongoDB = "mongodb://127.0.0.1:27017/grama";
+const mongoDB =
+  "mongodb+srv://grama2:kbUcgP6RhmLPiCrD@cluster.zrrt2to.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 //Get the default connection
