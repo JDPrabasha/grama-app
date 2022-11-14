@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Toolbar from "@mui/material/Toolbar";
 import Header from "../components/header";
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
 
 function applyCertificate() {
   return (
@@ -16,39 +17,78 @@ function applyCertificate() {
           p: 3,
           width: "70vw",
           ml: "22%",
+          mt: "5%",
         }}
       >
-        <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Grid
+          container
+          direction="column"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Grid>
+            <TextField
+              id="outlined-basic"
+              label="NIC or Passport ID"
+              variant="outlined"
+              size="small"
+              sx={{ width: "35vw", mb: 3 }}
+            />
+          </Grid>
+
+          <Grid>
+            <TextField
+              id="outlined-basic"
+              label="Address"
+              variant="outlined"
+              size="small"
+              multiline
+              rows={5}
+              sx={{ width: "35vw", mb: 3 }}
+            />
+          </Grid>
+
+          <Grid>
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                width: "35vw",
+                backgroundColor: "#09ad58",
+                ":hover": {
+                  backgroundColor: "#09914b",
+                },
+              }}
+            >
+              Upload proof of address
+              <input type="file" hidden />
+            </Button>
+          </Grid>
+        </Grid>
       </Box>
+
+      <Grid>
+        <Button
+          variant="outlined"
+          sx={{
+            mt: 60,
+            width: "10vw",
+            borderColor: "#09ad58",
+            color: "#09ad58",
+            ":hover": {
+              borderColor: "#09914b",
+              color: "#09ad58",
+            },
+          }}
+        >
+          Submit
+        </Button>
+      </Grid>
     </>
   );
 }
