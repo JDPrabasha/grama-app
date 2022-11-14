@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/JDPrabasha/grama-app/issues"
   },
-  "homepage": "https://github.com/JDPrabasha/grama-app#readme"
+  "homepage": "https://github.com/JDPrabasha/grama-app#readme",
+  "dependencies": {
+    "react-query": "^3.39.2",
+    "react-router": "^6.4.3",
+    "react-router-dom": "^6.4.3"
+  }
 }
