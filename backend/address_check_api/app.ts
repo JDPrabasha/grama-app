@@ -14,6 +14,45 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
+app.put("/process/:nic", async (req: Request, res: Response) => {
+  try {
+    const nic = req.params.nic;
+    await request.findOneAndUpdate(
+      { nic: nic },
+      { status: "Processing", updatedAt: Date.now() }
+    );
+    res.status(201).send("Set to Processing");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.put("/confirm/:nic", async (req: Request, res: Response) => {
+  try {
+    const nic = req.params.nic;
+    await request.findOneAndUpdate(
+      { nic: nic },
+      { status: "Confirmed", updatedAt: Date.now() }
+    );
+    res.status(201).send("Set to Confirmed");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.put("/missing/:nic", async (req: Request, res: Response) => {
+  try {
+    const nic = req.params.nic;
+    await request.findOneAndUpdate(
+      { nic: nic },
+      { status: "Missing Info", updatedAt: Date.now() }
+    );
+    res.status(201).send("Set to Missing Info");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 app.put("/:nic", async (req: Request, res: Response) => {
   try {
     const nic = req.params.nic;
@@ -25,6 +64,16 @@ app.put("/:nic", async (req: Request, res: Response) => {
     );
 
     res.status(201).send("Proof updated");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.get("/status/:nic", async (req: Request, res: Response) => {
+  try {
+    const nic = req.params.nic;
+    const result = await request.findOne({ nic: nic }, { nic: 1, status: 1 });
+    res.status(200).send(result);
   } catch (err) {
     res.status(500).send(err);
   }
