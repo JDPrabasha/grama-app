@@ -18,7 +18,21 @@ import Grid from "@mui/material/Unstable_Grid2";
 
 const drawerWidth = "20%";
 
-export default function PermanentDrawerLeft() {
+const navigationNames = [
+  [
+    ["Dashboard", "/user/dashboard", "key1"],
+    ["Apply for certificate", "/user/apply-certificate", "key2"],
+    ["Check status", "/user/status", "key3"],
+    ["Help", "/user/help", "key4"],
+  ],
+
+  [
+    ["Dashboard", "/admin/dashboard", "keyA"],
+    ["Requests", "/admin/requests", "keyB"],
+  ],
+];
+
+export default function PermanentDrawerLeft({ index }) {
   return (
     <div style={{ backgroundColor: "red" }}>
       <Box sx={{ display: "flex" }}>
@@ -63,10 +77,41 @@ export default function PermanentDrawerLeft() {
           </Grid>
 
           <List>
-            {/* {["Help"].map(
-              (text, index) => ( */}
+            {navigationNames[index].map((attr) => (
+              <Link
+                to={attr[1]}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <ListItem
+                  key={attr[2]}
+                  disablePadding
+                  sx={{
+                    transition: "0.3s ease",
+                    height: "9vh",
 
-            <Link
+                    ":hover": {
+                      backgroundColor: "#09ad58",
+                      transition: "0.3s ease",
+                    },
+                  }}
+                >
+                  <ListItemButton>
+                    <ListItemIcon></ListItemIcon>
+                    <ListItemText
+                      primary={attr[0]}
+                      sx={{
+                        fontWeight: 600,
+                        fontFamily: "Segoe UI",
+                        textDecoration: "none",
+                        // height: "50%",
+                      }}
+                    ></ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            ))}
+
+            {/* <Link
               to="/user/dashboard"
               style={{ textDecoration: "none", color: "white" }}
             >
@@ -176,11 +221,7 @@ export default function PermanentDrawerLeft() {
                   ></ListItemText>
                 </ListItemButton>
               </ListItem>
-            </Link>
-
-            {/*                 
-              )
-            )} */}
+            </Link> */}
           </List>
         </Drawer>
       </Box>

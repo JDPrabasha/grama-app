@@ -2,13 +2,13 @@ import React from "react";
 import { Outlet } from "react-router";
 import SideNav from "../components/sideNav";
 
-function users() {
+function admin() {
   return (
     <>
-      <SideNav index={0} />
+      <SideNav index={1} />
       <Outlet />
     </>
   );
 }
 
-export default users;
+export default admin;

@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 //components
-import Nabar from "./Navbar";
+import Nabar from "../components/Navbar";
 
 //image
 import homeImage from "../../images/homepageimg.svg";
