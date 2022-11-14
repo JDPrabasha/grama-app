@@ -27,12 +27,29 @@ app.put("/process/:nic", async (req: Request, res: Response) => {
   }
 });
 
+app.put("/policeVerify/:nic", async (req: Request, res: Response) => {
+  try {
+    const nic = req.params.nic;
+    await request.findOneAndUpdate(
+      { nic: nic },
+      { status: "Confirmed", updatedAt: Date.now(), policeVerification: true }
+    );
+    res.status(201).send("Set to Confirmed");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 app.put("/confirm/:nic", async (req: Request, res: Response) => {
   try {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
       { nic: nic },
-      { status: "Confirmed", updatedAt: Date.now() }
+      {
+        status: "Confirmed",
+        updatedAt: Date.now(),
+        lastApprovalDate: Date.now(),
+      }
     );
     res.status(201).send("Set to Confirmed");
   } catch (err) {
@@ -72,7 +89,10 @@ app.put("/:nic", async (req: Request, res: Response) => {
 app.get("/status/:nic", async (req: Request, res: Response) => {
   try {
     const nic = req.params.nic;
-    const result = await request.findOne({ nic: nic }, { nic: 1, status: 1 });
+    const result = await request.findOne(
+      { nic: nic },
+      { nic: 1, status: 1, policeVerification: 1, _id: 0 }
+    );
     res.status(200).send(result);
   } catch (err) {
     res.status(500).send(err);

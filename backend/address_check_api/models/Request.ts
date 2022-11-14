@@ -26,10 +26,15 @@ const requestSchema = new Schema({
     enum: Object.values(Status),
     default: Status.PENDING,
   },
+
+  policeVerification: {
+    type: Boolean,
+    default: false,
+  },
+
   lastApprovalDate: {
     type: Date,
   },
-
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
