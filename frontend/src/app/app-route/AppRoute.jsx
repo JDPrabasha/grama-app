@@ -5,15 +5,12 @@ import Home from "../homePage/Home";
 
 //user
 import Users from "../user_webapp/users";
-import UserDashboard from "../user_webapp/dashboard";
-import ApplyCertificate from "../user_webapp/applyCertificate";
-import CheckStatus from "../user_webapp/checkStatus";
-import Help from "../user_webapp/help";
 
 //admin
 import Admin from "../admin_webapp/admin";
-import AdminDashboard from "../admin_webapp/dashboard";
-import AdminRequests from "../admin_webapp/requests";
+
+//error page
+import ErrorPage from "../homePage/errorPage";
 
 function AppRoute() {
   return (
@@ -22,6 +19,7 @@ function AppRoute() {
         <Route exact path="/" component={Home} />
         <Route path="/user" component={Users} />
         <Route path="/admin" component={Admin} />
+        <Route path="/*" component={ErrorPage} />
 
         {/* <Route path="/user" element={<Users />}>
         <Route path="dashboard" element={<UserDashboard />} />
