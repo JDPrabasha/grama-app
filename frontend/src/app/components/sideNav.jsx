@@ -20,7 +20,6 @@ const drawerWidth = "20%";
 
 const navigationNames = [
   [
-    // ["Dashboard", "/user/dashboard", "key1"],
     ["Apply for certificate", "/user/apply-certificate", "key2"],
     ["Check status", "/user/status", "key3"],
     ["Help", "/user/help", "key4"],
@@ -109,118 +108,6 @@ export default function PermanentDrawerLeft({ index }) {
                 </ListItem>
               </Link>
             ))}
-
-            {/* <Link
-              to="/user/dashboard"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <ListItem
-                key={"udash"}
-                disablePadding
-                sx={{
-                  transition: "0.3s ease",
-                  height: "30%",
-
-                  ":hover": {
-                    backgroundColor: "#09ad58",
-                    transition: "0.3s ease",
-                  },
-                }}
-              >
-                <ListItemButton>
-                  <ListItemIcon></ListItemIcon>
-                  <ListItemText
-                    primary={"Dashboard"}
-                    sx={{
-                      fontWeight: 600,
-                      fontFamily: "Segoe UI",
-                      textDecoration: "none",
-                    }}
-                  ></ListItemText>
-                </ListItemButton>
-              </ListItem>
-            </Link>
-
-            <Link
-              to="/user/apply-certificate"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <ListItem
-                key={"Apply for certificate"}
-                disablePadding
-                sx={{
-                  transition: "0.3s ease",
-                  height: "30%",
-
-                  ":hover": {
-                    backgroundColor: "#09ad58",
-                    transition: "0.3s ease",
-                  },
-                }}
-              >
-                <ListItemButton>
-                  <ListItemIcon></ListItemIcon>
-                  <ListItemText
-                    primary={"Apply for certificate"}
-                    sx={{ fontWeight: 600, fontFamily: "Segoe UI" }}
-                  ></ListItemText>
-                </ListItemButton>
-              </ListItem>
-            </Link>
-
-            <Link
-              to="/user/status"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <ListItem
-                key={"Check status"}
-                disablePadding
-                sx={{
-                  transition: "0.3s ease",
-                  height: "30%",
-
-                  ":hover": {
-                    backgroundColor: "#09ad58",
-                    transition: "0.3s ease",
-                  },
-                }}
-              >
-                <ListItemButton>
-                  <ListItemIcon></ListItemIcon>
-                  <ListItemText
-                    primary={"Check status"}
-                    sx={{ fontWeight: 600, fontFamily: "Segoe UI" }}
-                  ></ListItemText>
-                </ListItemButton>
-              </ListItem>
-            </Link>
-
-            <Link
-              to="/user/help"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <ListItem
-                key={"Help"}
-                disablePadding
-                sx={{
-                  transition: "0.3s ease",
-                  height: "30%",
-
-                  ":hover": {
-                    backgroundColor: "#09ad58",
-                    transition: "0.3s ease",
-                  },
-                }}
-              >
-                <ListItemButton>
-                  <ListItemIcon></ListItemIcon>
-                  <ListItemText
-                    primary={"Help"}
-                    sx={{ fontWeight: 600, fontFamily: "Segoe UI" }}
-                  ></ListItemText>
-                </ListItemButton>
-              </ListItem>
-            </Link> */}
           </List>
         </Drawer>
       </Box>

@@ -15,8 +15,6 @@ function admin() {
       </Route>
       <Route path="/admin/dashboard" component={AdminDashboard} />
       <Route path="/admin/requests" component={AdminRequests} />
-
-      {/* <Outlet /> */}
     </>
   );
 }

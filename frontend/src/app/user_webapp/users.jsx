@@ -14,14 +14,10 @@ function users() {
 
       <Route exact path="/user">
         <Redirect to="/user/apply-certificate" />
-        {/* <Redirect to="/user/status" /> */}
       </Route>
-      {/* <Route path="/user/dashboard" component={UserDashboard} /> */}
       <Route path="/user/apply-certificate" component={ApplyCertificate} />
       <Route path="/user/status" component={CheckStatus} />
       <Route path="/user/help" component={Help} />
-
-      {/* <Outlet /> */}
     </>
   );
 }
