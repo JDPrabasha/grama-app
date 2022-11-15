@@ -1,4 +1,9 @@
-import * as React from "react";
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useEffect,
+  useState,
+} from "react";
 
 //mui
 import Container from "@mui/material/Container";
@@ -13,7 +18,51 @@ import Nabar from "../components/Navbar";
 //image
 import homeImage from "../../images/homepageimg.svg";
 
+//asgardeo
+import { useAuthContext } from "@asgardeo/auth-react";
+
 function Home() {
+  const {
+    state,
+    signIn,
+    signOut,
+    getBasicUserInfo,
+    getIDToken,
+    getDecodedIDToken,
+    on,
+  } = useAuthContext();
+
+  const [derivedAuthenticationState, setDerivedAuthenticationState] =
+    useState(null);
+  const [hasAuthenticationErrors, setHasAuthenticationErrors] = useState(false);
+  const [hasLogoutFailureError, setHasLogoutFailureError] = useState();
+
+  useEffect(() => {
+    if (!state?.isAuthenticated) {
+      return;
+    }
+
+    (async () => {
+      const basicUserInfo = await getBasicUserInfo();
+      const idToken = await getIDToken();
+      const decodedIDToken = await getDecodedIDToken();
+
+      const derivedState = {
+        authenticateResponse: basicUserInfo,
+        idToken: idToken.split("."),
+        decodedIdTokenHeader: JSON.parse(atob(idToken.split(".")[0])),
+        decodedIDTokenPayload: decodedIDToken,
+      };
+
+      setDerivedAuthenticationState(derivedState);
+    })();
+  }, [state.isAuthenticated]);
+
+  const handleLogin = () => {
+    setHasLogoutFailureError(false);
+    signIn().catch(() => setHasAuthenticationErrors(true));
+  };
+
   return (
     <div
       style={{
@@ -83,6 +132,7 @@ function Home() {
                       color: "#09ad58",
                     },
                   }}
+                  onClick={() => signIn()}
                 >
                   Login
                 </Button>
@@ -95,6 +145,22 @@ function Home() {
           </Grid>
         </Box>
       </Container>
+
+      {/* test */}
+
+      {/* <div className="App">
+        {state.isAuthenticated ? (
+          <div>
+            <ul>
+              <li>{state.username}</li>
+            </ul>
+
+            <button onClick={() => signOut()}>Logout</button>
+          </div>
+        ) : (
+          <button onClick={() => signIn()}>Login</button>
+        )}
+      </div> */}
     </div>
   );
 }
