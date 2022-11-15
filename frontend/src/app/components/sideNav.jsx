@@ -20,7 +20,7 @@ const drawerWidth = "20%";
 
 const navigationNames = [
   [
-    ["Dashboard", "/user/dashboard", "key1"],
+    // ["Dashboard", "/user/dashboard", "key1"],
     ["Apply for certificate", "/user/apply-certificate", "key2"],
     ["Check status", "/user/status", "key3"],
     ["Help", "/user/help", "key4"],
