@@ -4,6 +4,7 @@ import Header from "../components/header";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
+import { Typography } from "@mui/material";
 
 function applyCertificate() {
   return (
@@ -31,6 +32,25 @@ function applyCertificate() {
             width: "100%",
           }}
         >
+          <Grid container>
+            <Typography
+              variant="h4"
+              component="div"
+              sx={{
+                mb: "3%",
+                fontWeight: 700,
+                fontFamily: "Segoe UI",
+              }}
+            >
+              Hi ! You can apply for your{" "}
+              <span style={{ color: "#09ad58" }}>
+                police clearance certificate
+              </span>{" "}
+              by filling the information
+              <span style={{ color: "#09ad58" }}> below.</span>
+            </Typography>
+          </Grid>
+
           <Grid>
             <TextField
               id="outlined-basic"
