@@ -1,9 +1,10 @@
 import React from "react";
-import SideNav from "../components/sideNav";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Toolbar from "@mui/material/Toolbar";
 import Header from "../components/header";
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 function help() {
   return (
@@ -17,38 +18,66 @@ function help() {
           p: 3,
           width: "70vw",
           ml: "22%",
+          mt: "5%",
         }}
       >
-        <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Grid
+          container
+          direction="column"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Grid container>
+            <Typography
+              variant="h4"
+              component="div"
+              sx={{
+                mb: "3%",
+                fontWeight: 700,
+                fontFamily: "Segoe UI",
+              }}
+            >
+              How can we <span style={{ color: "#09ad58" }}> help</span> you
+              with?
+            </Typography>
+          </Grid>
+
+          <Grid>
+            <TextField
+              id="outlined-basic"
+              label="Type your issue"
+              variant="outlined"
+              size="small"
+              multiline
+              rows={5}
+              sx={{ width: "35vw", mb: 3 }}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container>
+          <Button
+            variant="outlined"
+            sx={{
+              ml: "25%",
+              mt: 1,
+              width: "12vw",
+              borderColor: "#09ad58",
+              color: "#09ad58",
+              ":hover": {
+                borderColor: "#09914b",
+                color: "#09ad58",
+              },
+            }}
+          >
+            Submit
+          </Button>
+        </Grid>
       </Box>
     </>
   );
