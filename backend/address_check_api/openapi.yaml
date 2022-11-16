@@ -1,0 +1,25 @@
+openapi: 3.0.3
+
+info:
+ title: Open API Spec
+ version: '5.7'
+ 
+tags:
+ - name: request
+   description: Sending and Updating Requests
+ 
+paths:
+ /:
+
+  get:
+   tags:
+    - request
+   responses:
+    200:
+     description: Success
+    500:
+     description: Internal Server Error
+
+  
+
+ 
