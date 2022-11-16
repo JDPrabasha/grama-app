@@ -17,7 +17,7 @@ app.get('/', (req,res) => {
 })
 
 //db connection
-mongoose.connect(process.env.DB_CONNECTION,{
+mongoose.connect("mongodb+srv://mongo:LTFp83gDy0nwW8Tl@cluster0.r6ftc5m.mongodb.net/identity_check?retryWrites=true&w=majority",{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(() => {
