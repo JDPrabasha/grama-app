@@ -99,7 +99,7 @@ app.get("/status/:nic", async (req: Request, res: Response) => {
   }
 });
 
-//requires nic and address
+//requires nic and address and email
 app.post("/", async (req: Request, res: Response) => {
   try {
     console.log(req.body);
