@@ -10,6 +10,10 @@ import Help from "../userPages/help";
 import { useAuthContext } from "@asgardeo/auth-react";
 
 function users() {
+  if (!localStorage.getItem("stateKey")) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <>
       <SideNav index={0} />
