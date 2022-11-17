@@ -23,6 +23,13 @@ import homeImage from "../../images/homepageimg.svg";
 
 //asgardeo
 import { useAuthContext } from "@asgardeo/auth-react";
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  marginTop: "20%",
+};
 
 function Home() {
   const {
@@ -72,6 +79,10 @@ function Home() {
         </Route>
       </>
     );
+  }
+
+  if (state.isLoading) {
+    return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;
   }
 
   return (
