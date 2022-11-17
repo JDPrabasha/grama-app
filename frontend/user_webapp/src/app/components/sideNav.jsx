@@ -26,11 +26,6 @@ const navigationNames = [
     ["Check status", "/user/status", "key3"],
     ["Help", "/user/help", "key4"],
   ],
-
-  [
-    ["Dashboard", "/admin/dashboard", "keyA"],
-    ["Requests", "/admin/requests", "keyB"],
-  ],
 ];
 
 export default function PermanentDrawerLeft({ index }) {
@@ -87,7 +82,7 @@ export default function PermanentDrawerLeft({ index }) {
             <Grid xs={4}>
               <img
                 src={logo}
-                style={{ height: "50px", marginLeft: "80%", marginTop: "15%" }}
+                style={{ height: "90px", marginLeft: "80%", marginTop: "15%" }}
               />
             </Grid>
           </Grid>

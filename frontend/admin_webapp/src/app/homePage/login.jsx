@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from "@asgardeo/auth-react";
 import { Route, Redirect } from "react-router-dom";
 import Admin from "../adminPages/admin";
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  marginTop: "20%",
+};
 
 function Login() {
   const {
@@ -43,7 +50,9 @@ function Login() {
   }, [state.isAuthenticated]);
 
   useEffect(() => {
-    signIn();
+    if (!localStorage.getItem("stateKey")) {
+      signIn();
+    }
   }, []);
 
   if (localStorage.getItem("stateKey")) {
@@ -57,11 +66,7 @@ function Login() {
     );
   }
 
-  return (
-    <>
-      <div>error</div>
-    </>
-  );
+  return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;
 }
 
 export default Login;

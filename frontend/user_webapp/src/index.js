@@ -10,11 +10,11 @@ root.render(
 
   <AuthProvider
     config={{
-      signInRedirectURL: "https://localhost:3000",
-      signOutRedirectURL: "https://localhost:3000",
+      signInRedirectURL: "https://ezgrama.vercel.app",
+      signOutRedirectURL: "https://ezgrama.vercel.app",
       clientID: "9f0iCjC69XCWPcFfgsJm_xbOItsa",
       baseUrl: "https://api.asgardeo.io/t/ezgrama",
-      scope: ["openid", "profile"],
+      scope: ["openid", "profile", "email"],
     }}
   >
     <AppRoute />

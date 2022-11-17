@@ -56,11 +56,11 @@ export default function HideAppBar(props) {
             <Container maxWidth="xl">
               <Grid container spacing={2}>
                 <Grid container xs={10}>
-                  <Grid xs={1}>
-                    <img src={logo} style={{ height: "40px" }} />
+                  <Grid xs={0.5}>
+                    <img src={logo} style={{ height: "60px" }} />
                   </Grid>
 
-                  <Grid xs={11}>
+                  <Grid xs={11.5}>
                     <Typography
                       variant="h6"
                       component="div"
@@ -75,6 +75,7 @@ export default function HideAppBar(props) {
                     variant="contained"
                     sx={{
                       mr: 1,
+                      mt: 1,
                       backgroundColor: "#09ad58",
                       ":hover": {
                         backgroundColor: "#09914b",
