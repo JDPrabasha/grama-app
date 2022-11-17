@@ -4,9 +4,28 @@ import { Route, Redirect } from "react-router-dom";
 import SideNav from "../components/sideNav";
 import Dashboard from "../adminPages/dashboard";
 import Requests from "../adminPages/requests";
-
 import { useAuthContext } from "@asgardeo/auth-react";
-function admin() {
+
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  marginTop: "20%",
+};
+
+function Admin() {
+  const { state, getBasicUserInfo, getIDToken, getDecodedIDToken } =
+    useAuthContext();
+
+  if (!localStorage.getItem("stateKey")) {
+    return <Redirect to="/" />;
+  }
+
+  if (state.isLoading) {
+    return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;
+  }
+
   return (
     <>
       <SideNav index={0} />
@@ -20,4 +39,4 @@ function admin() {
   );
 }
 
-export default admin;
+export default Admin;

@@ -81,7 +81,7 @@ export default function PermanentDrawerLeft({ index }) {
             <Grid xs={4}>
               <img
                 src={logo}
-                style={{ height: "50px", marginLeft: "80%", marginTop: "15%" }}
+                style={{ height: "90px", marginLeft: "80%", marginTop: "15%" }}
               />
             </Grid>
           </Grid>
