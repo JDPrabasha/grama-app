@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 
 import logo from "../../images/logo.svg";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -31,6 +32,15 @@ HideOnScroll.propTypes = {
 };
 
 export default function HideAppBar(props) {
+  const {
+    state,
+    signIn,
+    signOut,
+    getBasicUserInfo,
+    getIDToken,
+    getDecodedIDToken,
+    on,
+  } = useAuthContext();
   return (
     <React.Fragment>
       <CssBaseline />
@@ -70,10 +80,11 @@ export default function HideAppBar(props) {
                         backgroundColor: "#09914b",
                       },
                     }}
+                    onClick={() => signIn()}
                   >
-                    Signup
+                    Sign in
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outlined"
                     sx={{
                       borderColor: "#09ad58",
@@ -85,7 +96,7 @@ export default function HideAppBar(props) {
                     }}
                   >
                     Login
-                  </Button>
+                  </Button> */}
                 </Grid>
               </Grid>
             </Container>
