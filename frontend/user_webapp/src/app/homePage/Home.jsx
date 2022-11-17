@@ -5,6 +5,8 @@ import React, {
   useState,
 } from "react";
 
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
+
 //mui
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -14,6 +16,7 @@ import Button from "@mui/material/Button";
 
 //components
 import Nabar from "../components/Navbar";
+import Users from "../userPages/users";
 
 //image
 import homeImage from "../../images/homepageimg.svg";
@@ -34,13 +37,14 @@ function Home() {
 
   const [derivedAuthenticationState, setDerivedAuthenticationState] =
     useState(null);
-  const [hasAuthenticationErrors, setHasAuthenticationErrors] = useState(false);
-  const [hasLogoutFailureError, setHasLogoutFailureError] = useState();
 
   useEffect(() => {
+    console.log(state?.isAuthenticated);
     if (!state?.isAuthenticated) {
       return;
     }
+
+    localStorage.setItem("stateKey", state.isAuthenticated);
 
     (async () => {
       const basicUserInfo = await getBasicUserInfo();
@@ -55,13 +59,20 @@ function Home() {
       };
 
       setDerivedAuthenticationState(derivedState);
+      console.log(derivedState);
     })();
   }, [state.isAuthenticated]);
 
-  const handleLogin = () => {
-    setHasLogoutFailureError(false);
-    signIn().catch(() => setHasAuthenticationErrors(true));
-  };
+  if (localStorage.getItem("stateKey")) {
+    return (
+      <>
+        <Route exact path="/user" component={Users} />
+        <Route exact path="/" component={Users}>
+          <Redirect to="/user" />
+        </Route>
+      </>
+    );
+  }
 
   return (
     <div
@@ -117,11 +128,12 @@ function Home() {
                       backgroundColor: "#09914b",
                     },
                   }}
+                  onClick={() => signIn()}
                 >
-                  Signup
+                  Sign in
                 </Button>
 
-                <Button
+                {/* <Button
                   variant="outlined"
                   sx={{
                     borderColor: "#09ad58",
@@ -135,7 +147,7 @@ function Home() {
                   onClick={() => signIn()}
                 >
                   Login
-                </Button>
+                </Button> */}
               </div>
             </Grid>
 
@@ -145,22 +157,6 @@ function Home() {
           </Grid>
         </Box>
       </Container>
-
-      {/* test */}
-
-      {/* <div className="App">
-        {state.isAuthenticated ? (
-          <div>
-            <ul>
-              <li>{state.username}</li>
-            </ul>
-
-            <button onClick={() => signOut()}>Logout</button>
-          </div>
-        ) : (
-          <button onClick={() => signIn()}>Login</button>
-        )}
-      </div> */}
     </div>
   );
 }

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import SideNav from "../components/sideNav";
 // import UserDashboard from "../user_webapp/dashboard";
-import ApplyCertificate from "../user_webapp/applyCertificate";
-import CheckStatus from "../user_webapp/checkStatus";
-import Help from "../user_webapp/help";
+import ApplyCertificate from "../userPages/applyCertificate";
+import CheckStatus from "../userPages/checkStatus";
+import Help from "../userPages/help";
+
+import { useAuthContext } from "@asgardeo/auth-react";
 
 function users() {
   return (

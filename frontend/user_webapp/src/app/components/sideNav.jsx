@@ -12,9 +12,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import logo from "../../images/logo.svg";
-import "./sideNavStyle.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
+import Button from "@mui/material/Button";
+
+import { useAuthContext } from "@asgardeo/auth-react";
 
 const drawerWidth = "20%";
 
@@ -32,10 +34,25 @@ const navigationNames = [
 ];
 
 export default function PermanentDrawerLeft({ index }) {
+  const { signOut } = useAuthContext();
+
+  const handleLogout = () => {
+    localStorage.setItem("stateKey", "");
+    signOut();
+
+    return <Redirect to="/" />;
+  };
+
   return (
-    <div style={{ backgroundColor: "red" }}>
+    <div>
       <Box sx={{ display: "flex" }}>
         <Drawer
+          PaperProps={{
+            sx: {
+              backgroundColor: "#4c4c4c ",
+              color: "rgb(255 255 255 / 87%)",
+            },
+          }}
           sx={{
             width: drawerWidth,
             flexShrink: 0,
@@ -109,6 +126,28 @@ export default function PermanentDrawerLeft({ index }) {
               </Link>
             ))}
           </List>
+
+          <div
+            style={{
+              marginLeft: "17%",
+              position: "absolute",
+              bottom: 50,
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                width: "130%",
+                backgroundColor: "#09ad58",
+                ":hover": {
+                  backgroundColor: "#09914b",
+                },
+              }}
+              onClick={() => handleLogout()}
+            >
+              Logout
+            </Button>
+          </div>
         </Drawer>
       </Box>
     </div>
