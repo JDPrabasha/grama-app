@@ -7,11 +7,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider
     config={{
-      signInRedirectURL: "https://localhost:3000",
-      signOutRedirectURL: "https://localhost:3000",
+      signInRedirectURL: "http://localhost:3000/auth",
+      signOutRedirectURL: "http://localhost:3000/auth",
       clientID: "qkNIUmZvuuai886RfrXaw8mOzoka",
       baseUrl: "https://api.asgardeo.io/t/ezgrama",
-      scope: ["openid", "profile", "email"],
+      scope: ["openid", "profile"],
     }}
   >
     <APpRoute />
