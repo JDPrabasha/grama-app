@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "@asgardeo/auth-react";
-import { Route, Redirect } from "react-router-dom";
-import Admin from "../adminPages/admin";
 
-function Login() {
+function RedirectPage() {
   const {
     state,
     signIn,
@@ -42,26 +40,7 @@ function Login() {
     })();
   }, [state.isAuthenticated]);
 
-  useEffect(() => {
-    signIn();
-  }, []);
-
-  if (localStorage.getItem("stateKey")) {
-    return (
-      <>
-        <Route exact path="/admin" component={Admin} />
-        <Route exact path="/" component={Admin}>
-          <Redirect to="/admin" />
-        </Route>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <div>error</div>
-    </>
-  );
+  return <div>redirectPage</div>;
 }
 
-export default Login;
+export default RedirectPage;
