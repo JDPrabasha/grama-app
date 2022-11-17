@@ -7,11 +7,9 @@ const NicSchema = mongoose.Schema({
     dob:Date, 
     gender:String, 
     occupation:String, 
-    permanentAddress:{
-        address:String,
-        street:String,
-        city:String
-    },  
+    address:String,
+    street:String,
+    city:String,  
     issuedDate:Date
 });
 
