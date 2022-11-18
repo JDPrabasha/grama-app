@@ -49,9 +49,16 @@ router.post('/', async (req,res) => {
         return res.status(400).json({message:'Invalid Format'});
     }else{
         try{
-            const nic = await Citizen.find( { $or: [ { nic: req.body.nicNumber }, { passport : req.body.nicNumber } ],address: req.body.address } );
+            const address = req.body.address.toUpperCase().split(" ").join("");
+            const nic = await Citizen.find( { $or: [ { nic: req.body.nicNumber }, { passport : req.body.nicNumber } ]} );
             if(nic.length>0){
-                res.json({message:'Success',nic:nic[0].nic});
+                const dbAddress = nic[0].address.toUpperCase().split(" ").join("");
+                console.log(dbAddress);
+                if(address===dbAddress){
+                    res.json({message:'Success',nic:nic[0].nic});
+                }else{
+                    res.json({message:'fail'});
+                }
             }
             else{
                 res.json({message:'fail'});
