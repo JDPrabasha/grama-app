@@ -95,7 +95,16 @@ function Home() {
     >
       <Nabar />
       <Container maxWidth="xl">
-        <Box sx={{ mt: 0 }}>
+        <Box
+          sx={{
+            mt: {
+              xs: 10,
+              sm: 8,
+              md: 6,
+              lg: 0,
+            },
+          }}
+        >
           <Grid container>
             <Grid
               xs={7}
@@ -114,6 +123,11 @@ function Home() {
                   sx={{
                     fontWeight: 700,
                     fontFamily: "Segoe UI",
+                    fontSize: {
+                      xs: 30,
+                      sm: 42,
+                      md: 48,
+                    },
                   }}
                 >
                   Get your police clearance certificate without any{" "}
@@ -123,7 +137,16 @@ function Home() {
                 <Typography
                   variant="h6"
                   component="div"
-                  sx={{ mt: 2, color: "#7a7979", fontFamily: "Segoe UI" }}
+                  sx={{
+                    mt: 2,
+                    color: "#7a7979",
+                    fontFamily: "Segoe UI",
+                    fontSize: {
+                      xs: 13,
+                      sm: 16,
+                      md: 20,
+                    },
+                  }}
                 >
                   Get your police clearance certificate in a few days in the
                   comfort of your own home!
@@ -137,6 +160,11 @@ function Home() {
                     backgroundColor: "#09ad58",
                     ":hover": {
                       backgroundColor: "#09914b",
+                    },
+                    fontSize: {
+                      xs: 9,
+                      sm: 11,
+                      md: 13,
                     },
                   }}
                   onClick={() => signIn()}

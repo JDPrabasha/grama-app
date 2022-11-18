@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRoute from "./app/app-route/AppRoute";
 import { AuthProvider } from "@asgardeo/auth-react";
+import { Breakpoint, BreakpointProvider } from "react-socks";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,8 @@ root.render(
       scope: ["openid", "profile", "email"],
     }}
   >
-    <AppRoute />
+    <BreakpointProvider>
+      <AppRoute />
+    </BreakpointProvider>
   </AuthProvider>
 );

@@ -24,7 +24,6 @@ function users() {
       <Route path="/user/apply-certificate" component={ApplyCertificate} />
       <Route path="/user/status" component={CheckStatus} />
       <Route path="/user/help" component={Help} />
-      {/* <Route path="/*" component={ErrorPage} /> */}
     </>
   );
 }

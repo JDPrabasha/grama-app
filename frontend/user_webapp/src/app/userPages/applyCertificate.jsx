@@ -16,7 +16,11 @@ function applyCertificate() {
           flexGrow: 1,
           bgcolor: "background.default",
           p: 3,
-          width: "70vw",
+          width: {
+            sm: "70%",
+            md: "70%",
+            lg: "70vw",
+          },
           ml: "22%",
           mt: "5%",
         }}
@@ -28,8 +32,10 @@ function applyCertificate() {
             display: "flex",
             justifyContent: "center",
             alignContent: "center",
-            alignItems: "center",
-            width: "100%",
+            alignItems: { sm: "center" },
+            width: { xs: "100%", md: "100%", lg: "100%" },
+            ml: { xs: "14%", md: "0%" },
+            // backgroundColor: "red",
           }}
         >
           <Grid container>
@@ -37,9 +43,16 @@ function applyCertificate() {
               variant="h4"
               component="div"
               sx={{
-                mb: "3%",
+                mb: { xs: "20%", sm: "15%", md: "10%", lg: "5%" },
+                mt: { xs: "15%", sm: "0%", md: "0%" },
                 fontWeight: 700,
                 fontFamily: "Segoe UI",
+                fontSize: {
+                  xs: 13,
+                  sm: 20,
+                  md: 30,
+                  lg: 34,
+                },
               }}
             >
               Hi ! You can apply for your{" "}
@@ -57,7 +70,7 @@ function applyCertificate() {
               label="NIC or Passport ID"
               variant="outlined"
               size="small"
-              sx={{ width: "35vw", mb: 3 }}
+              sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
             />
           </Grid>
 
@@ -69,7 +82,7 @@ function applyCertificate() {
               size="small"
               multiline
               rows={5}
-              sx={{ width: "35vw", mb: 3 }}
+              sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
             />
           </Grid>
 
@@ -78,10 +91,17 @@ function applyCertificate() {
               variant="contained"
               component="label"
               sx={{
-                width: "35vw",
+                width: { xs: "57vw", sm: "50vw" },
+
                 backgroundColor: "#09ad58",
                 ":hover": {
                   backgroundColor: "#09914b",
+                },
+                fontSize: {
+                  xs: 9,
+                  sm: 11,
+                  md: 10,
+                  lg: 12,
                 },
               }}
             >
@@ -95,7 +115,13 @@ function applyCertificate() {
               variant="outlined"
               sx={{
                 mt: 6,
-                width: "17.5vw",
+                width: { xs: "21vw", sm: "17.5vw" },
+                fontSize: {
+                  xs: 9,
+                  sm: 11,
+                  md: 10,
+                  lg: 12,
+                },
                 borderColor: "#09ad58",
                 color: "#09ad58",
                 ":hover": {
