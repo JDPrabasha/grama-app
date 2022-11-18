@@ -30,7 +30,7 @@ function Admin() {
     <>
       <SideNav index={0} />
 
-      <Route exact path="/admin">
+      <Route path="/admin">
         <Redirect to="/admin/dashboard" />
       </Route>
       <Route path="/admin/dashboard" component={Dashboard} />

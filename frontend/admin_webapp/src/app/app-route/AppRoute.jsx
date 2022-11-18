@@ -6,6 +6,7 @@ import Home from "../homePage/login";
 
 //admin
 import Admin from "../adminPages/admin";
+import ErrorPage from "../homePage/errorPage";
 
 function AppRoute() {
   return (
@@ -13,6 +14,7 @@ function AppRoute() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/admin" component={Admin} />
+        <Route path="/*" component={ErrorPage} />
       </Switch>
     </BrowserRouter>
   );

@@ -6,6 +6,7 @@ import SideNav from "../components/sideNav";
 import ApplyCertificate from "../userPages/applyCertificate";
 import CheckStatus from "../userPages/checkStatus";
 import Help from "../userPages/help";
+import ErrorPage from "../homePage/errorPage";
 
 import { useAuthContext } from "@asgardeo/auth-react";
 
@@ -17,13 +18,13 @@ function users() {
   return (
     <>
       <SideNav index={0} />
-
-      <Route exact path="/user">
+      <Route path="/user">
         <Redirect to="/user/apply-certificate" />
       </Route>
       <Route path="/user/apply-certificate" component={ApplyCertificate} />
       <Route path="/user/status" component={CheckStatus} />
       <Route path="/user/help" component={Help} />
+      {/* <Route path="/*" component={ErrorPage} /> */}
     </>
   );
 }
