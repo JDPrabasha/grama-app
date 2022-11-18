@@ -8,8 +8,6 @@ const NicSchema = mongoose.Schema({
     gender:String, 
     occupation:String, 
     address:String,
-    street:String,
-    city:String,  
     issuedDate:Date
 });
 

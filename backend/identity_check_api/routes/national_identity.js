@@ -7,8 +7,6 @@ const router = express.Router();
 const idSchema = Joi.object().keys({
     nicNumber: Joi.string().regex(/^([0-9]{9}[x|X|v|V]|[0-9]{12}|([N|D]|[OL]{2})[0-9]{7})$/).required(),
     address: Joi.string().required(),
-    street: Joi.string().required(),
-    city: Joi.string().required(),
 });
 
 router.get('/', async (req,res) => {
@@ -30,8 +28,6 @@ router.post('/addPerson',async (req,res) => {
         gender:req.body.gender, 
         occupation:req.body.occupation, 
         address:req.body.address,
-        street:req.body.street,
-        city:req.body.city,
         issuedDate:req.body.issuedDate
     });
 
@@ -53,7 +49,7 @@ router.post('/', async (req,res) => {
         return res.status(400).json({message:'Invalid Format'});
     }else{
         try{
-            const nic = await Citizen.find( { $or: [ { nic: req.body.nicNumber }, { passport : req.body.nicNumber } ],address: req.body.address, street: req.body.street, city: req.body.city } );
+            const nic = await Citizen.find( { $or: [ { nic: req.body.nicNumber }, { passport : req.body.nicNumber } ],address: req.body.address } );
             if(nic.length>0){
                 res.json({message:'Success',nic:nic[0].nic});
             }
@@ -75,7 +71,7 @@ router.post('/', async (req,res) => {
 //         return res.status(400).json({message:'Invalid Format'});
 //     }else{
 //         try{
-//             const nic = await Citizen.find( { $or: [ { nic: req.params.nicNumber }, { passport : req.params.nicNumber } ],address: req.params.address, street: req.params.street, city: req.params.city } );
+//             const nic = await Citizen.find( { $or: [ { nic: req.params.nicNumber }, { passport : req.params.nicNumber } ],address: req.params.address } );
 //             if(nic.length>0){
 //                 res.json({message:'Success',nic:nic[0].nic});
 //             }
