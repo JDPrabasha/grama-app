@@ -15,25 +15,18 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/checkExists", async (req: Request, res: Response) => {
-  try{
-    const {email} = req.query;
-    const result = await request.findOne
-    ({email:email});
-    if(result){
-      res.status(200).send({nic:result.nic, status:result.status});
+  try {
+    const { email } = req.query;
+    const result = await request.findOne({ email: email });
+    if (result) {
+      res.status(200).send({ nic: result.nic, status: result.status });
+    } else {
+      res.status(200).send({});
+    }
+  } catch (err) {
+    res.status(500).send({ error: err });
   }
-  else{
-    res.status(200).send({});
-  }
-}
-catch(err){
-  res.status
-  (500).send({error:err});
-}
 });
-
- 
-
 
 app.put("/process/:nic", async (req: Request, res: Response) => {
   try {
@@ -53,7 +46,7 @@ app.put("/policeVerify/:nic", async (req: Request, res: Response) => {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
       { nic: nic },
-      { status: "Confirmed", updatedAt: Date.now(), policeVerification: true }
+      { updatedAt: Date.now(), policeVerification: true }
     );
     res.status(201).send("Set to Confirmed");
   } catch (err) {
@@ -110,7 +103,10 @@ app.put("/:nic", async (req: Request, res: Response) => {
 app.get("/requests/:area", async (req: Request, res: Response) => {
   try {
     const area = req.params.area;
-    const requests = await request.find({ area: area, policeVerification:true, status:"Processing" }, { _id: 0, __v: 0, });
+    const requests = await request.find(
+      { area: area, policeVerification: true, status: "Processing" },
+      { _id: 0, __v: 0 }
+    );
     res.status(200).send(requests);
   } catch (err) {
     res.status(500).send(err);
