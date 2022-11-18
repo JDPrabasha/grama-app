@@ -10,6 +10,10 @@ var Status;
     Status["MISSING_INFO"] = "Missing Info";
 })(Status || (Status = {}));
 const requestSchema = new Schema({
+    email: {
+        type: String,
+        required: true,
+    },
     proof: {
         type: String,
     },
