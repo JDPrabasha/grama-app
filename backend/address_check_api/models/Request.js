@@ -1,14 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-enum Status {
-  PENDING = "Pending",
-  CONFIRMED = "Confirmed",
-  REJECTED = "Rejected",
-  PROCESSING = "Processing",
-  MISSING_INFO = "Missing Info",
-}
-
 const requestSchema = new Schema({
   email: {
     type: String,
@@ -33,8 +25,7 @@ const requestSchema = new Schema({
   },
   status: {
     type: String,
-    enum: Object.values(Status),
-    default: Status.PENDING,
+    default: "Pending",
   },
 
   policeVerification: {
