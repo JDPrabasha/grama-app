@@ -1,20 +1,18 @@
-import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
-const db = require("../db/db");
+// require("dotenv").config();
+const express = require("express");
+const db = require("./db/db");
 const request = require("./models/Request");
 const bodyParser = require("body-parser");
 
-dotenv.config();
-
-const app: Express = express();
+const app = express();
 app.use(bodyParser.json());
 const port = process.env.PORT || 8000;
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (req, res) => {
   res.send("Express + TypeScript Server");
 });
 
-app.put("/process/:nic", async (req: Request, res: Response) => {
+app.put("/process/:nic", async (req, res) => {
   try {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
@@ -27,7 +25,7 @@ app.put("/process/:nic", async (req: Request, res: Response) => {
   }
 });
 
-app.put("/policeVerify/:nic", async (req: Request, res: Response) => {
+app.put("/policeVerify/:nic", async (req, res) => {
   try {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
@@ -40,7 +38,7 @@ app.put("/policeVerify/:nic", async (req: Request, res: Response) => {
   }
 });
 
-app.put("/confirm/:nic", async (req: Request, res: Response) => {
+app.put("/confirm/:nic", async (req, res) => {
   try {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
@@ -57,7 +55,7 @@ app.put("/confirm/:nic", async (req: Request, res: Response) => {
   }
 });
 
-app.put("/missing/:nic", async (req: Request, res: Response) => {
+app.put("/missing/:nic", async (req, res) => {
   try {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
@@ -70,7 +68,7 @@ app.put("/missing/:nic", async (req: Request, res: Response) => {
   }
 });
 
-app.put("/:nic", async (req: Request, res: Response) => {
+app.put("/:nic", async (req, res) => {
   try {
     const nic = req.params.nic;
     const proof = req.body.proof;
@@ -86,7 +84,7 @@ app.put("/:nic", async (req: Request, res: Response) => {
   }
 });
 
-app.get("/status/:nic", async (req: Request, res: Response) => {
+app.get("/status/:nic", async (req, res) => {
   try {
     const nic = req.params.nic;
     const result = await request.findOne(
@@ -100,7 +98,7 @@ app.get("/status/:nic", async (req: Request, res: Response) => {
 });
 
 //requires nic and address
-app.post("/", async (req: Request, res: Response) => {
+app.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const newRequest = new request(req.body);
