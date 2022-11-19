@@ -52,7 +52,7 @@ app.put("/process/:nic", (req, res) => __awaiter(void 0, void 0, void 0, functio
 app.put("/policeVerify/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const nic = req.params.nic;
-        yield request.findOneAndUpdate({ nic: nic }, { status: "Confirmed", updatedAt: Date.now(), policeVerification: true });
+        yield request.findOneAndUpdate({ nic: nic }, { updatedAt: Date.now(), policeVerification: true });
         res.status(201).send("Set to Confirmed");
     }
     catch (err) {
@@ -97,7 +97,7 @@ app.put("/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 app.get("/requests/:area", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const area = req.params.area;
-        const requests = yield request.find({ area: area, policeVerification: true }, { _id: 0, __v: 0, });
+        const requests = yield request.find({ area: area, policeVerification: true, status: "Processing" }, { _id: 0, __v: 0 });
         res.status(200).send(requests);
     }
     catch (err) {
