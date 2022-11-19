@@ -3,19 +3,37 @@ import dotenv from "dotenv";
 const db = require("../db/db");
 const request = require("./models/Request");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 
 dotenv.config();
 
 const app: Express = express();
 app.use(bodyParser.json());
-app.use(cors());
-
 const port = process.env.PORT || 8000;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
+
+app.get("/checkExists", async (req: Request, res: Response) => {
+  try{
+    const {email} = req.query;
+    const result = await request.findOne
+    ({email:email});
+    if(result){
+      res.status(200).send({nic:result.nic, status:result.status});
+  }
+  else{
+    res.status(200).send({});
+  }
+}
+catch(err){
+  res.status
+  (500).send({error:err});
+}
+});
+
+ 
+
 
 app.put("/process/:nic", async (req: Request, res: Response) => {
   try {
@@ -112,7 +130,7 @@ app.get("/status/:nic", async (req: Request, res: Response) => {
   }
 });
 
-//requires nic and address and email
+//requires nic and address
 app.post("/", async (req: Request, res: Response) => {
   try {
     console.log(req.body);

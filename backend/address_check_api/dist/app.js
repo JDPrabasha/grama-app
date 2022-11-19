@@ -17,15 +17,28 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const db = require("../db/db");
 const request = require("./models/Request");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(bodyParser.json());
-app.use(cors());
 const port = process.env.PORT || 8000;
 app.get("/", (req, res) => {
     res.send("Express + TypeScript Server");
 });
+app.get("/checkExists", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { email } = req.query;
+        const result = yield request.findOne({ email: email });
+        if (result) {
+            res.status(200).send({ nic: result.nic, status: result.status });
+        }
+        else {
+            res.status(200).send({});
+        }
+    }
+    catch (err) {
+        res.status(500).send({ error: err });
+    }
+}));
 app.put("/process/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const nic = req.params.nic;
@@ -101,7 +114,7 @@ app.get("/status/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(500).send(err);
     }
 }));
-//requires nic and address and email
+//requires nic and address
 app.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);
