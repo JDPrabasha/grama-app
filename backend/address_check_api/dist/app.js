@@ -17,9 +17,11 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const db = require("../db/db");
 const request = require("./models/Request");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(bodyParser.json());
+app.use(cors());
 const port = process.env.PORT || 8000;
 app.get("/", (req, res) => {
     res.send("Express + TypeScript Server");
@@ -99,7 +101,7 @@ app.get("/status/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(500).send(err);
     }
 }));
-//requires nic and address
+//requires nic and address and email
 app.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);

@@ -3,11 +3,14 @@ import dotenv from "dotenv";
 const db = require("../db/db");
 const request = require("./models/Request");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 dotenv.config();
 
 const app: Express = express();
 app.use(bodyParser.json());
+app.use(cors());
+
 const port = process.env.PORT || 8000;
 
 app.get("/", (req: Request, res: Response) => {
@@ -109,7 +112,7 @@ app.get("/status/:nic", async (req: Request, res: Response) => {
   }
 });
 
-//requires nic and address
+//requires nic and address and email
 app.post("/", async (req: Request, res: Response) => {
   try {
     console.log(req.body);
