@@ -17,6 +17,10 @@ const requestSchema = new Schema({
         type: String,
         required: true,
     },
+    area: {
+        type: String,
+        default: "Colombo",
+    },
     nic: {
         type: String,
         required: true,

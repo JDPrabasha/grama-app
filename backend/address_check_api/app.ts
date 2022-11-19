@@ -86,6 +86,16 @@ app.put("/:nic", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/requests/:area", async (req: Request, res: Response) => {
+  try {
+    const area = req.params.area;
+    const requests = await request.find({ area: area }, { _id: 0, __v: 0, });
+    res.status(200).send(requests);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 app.get("/status/:nic", async (req: Request, res: Response) => {
   try {
     const nic = req.params.nic;
