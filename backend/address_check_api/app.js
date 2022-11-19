@@ -30,7 +30,7 @@ app.put("/policeVerify/:nic", async (req, res) => {
     const nic = req.params.nic;
     await request.findOneAndUpdate(
       { nic: nic },
-      { status: "Confirmed", updatedAt: Date.now(), policeVerification: true }
+      { updatedAt: Date.now(), policeVerification: true }
     );
     res.status(201).send("Set to Confirmed");
   } catch (err) {
@@ -79,6 +79,19 @@ app.put("/:nic", async (req, res) => {
     );
 
     res.status(201).send("Proof updated");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.get("/requests/:area", async (req, res) => {
+  try {
+    const area = req.params.area;
+    const requests = await request.find(
+      { area: area, policeVerification: true, status: "Processing" },
+      { _id: 0, __v: 0 }
+    );
+    res.status(200).send(requests);
   } catch (err) {
     res.status(500).send(err);
   }
