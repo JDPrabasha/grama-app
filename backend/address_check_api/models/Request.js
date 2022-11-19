@@ -2,12 +2,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const requestSchema = new Schema({
+  email: {
+    type: String,
+    required: true,
+  },
   proof: {
     type: String,
   },
   address: {
     type: String,
     required: true,
+  },
+
+  area: {
+    type: String,
+    default: "Colombo",
   },
   nic: {
     type: String,
