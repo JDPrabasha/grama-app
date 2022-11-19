@@ -97,7 +97,7 @@ app.put("/:nic", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 app.get("/requests/:area", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const area = req.params.area;
-        const requests = yield request.find({ area: area }, { _id: 0, __v: 0, });
+        const requests = yield request.find({ area: area, policeVerification: true }, { _id: 0, __v: 0, });
         res.status(200).send(requests);
     }
     catch (err) {
