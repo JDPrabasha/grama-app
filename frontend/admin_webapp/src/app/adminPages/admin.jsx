@@ -4,6 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import SideNav from "../components/sideNav";
 import Dashboard from "../adminPages/dashboard";
 import Requests from "../adminPages/requests";
+import Document from "../adminPages/document";
 import { useAuthContext } from "@asgardeo/auth-react";
 
 import PuffLoader from "react-spinners/PuffLoader";
@@ -15,16 +16,16 @@ const override = {
 };
 
 function Admin() {
-  const { state, getBasicUserInfo, getIDToken, getDecodedIDToken } =
-    useAuthContext();
+  // const { state, getBasicUserInfo, getIDToken, getDecodedIDToken } =
+  //   useAuthContext();
 
-  if (!localStorage.getItem("stateKey")) {
-    return <Redirect to="/" />;
-  }
+  // if (!localStorage.getItem("stateKey")) {
+  //   return <Redirect to="/" />;
+  // }
 
-  if (state.isLoading) {
-    return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;
-  }
+  // if (state.isLoading) {
+  //   return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;
+  // }
 
   return (
     <>
@@ -35,6 +36,7 @@ function Admin() {
       </Route>
       <Route path="/admin/dashboard" component={Dashboard} />
       <Route path="/admin/requests" component={Requests} />
+      <Route path="/admin/document" component={Document} />
     </>
   );
 }
