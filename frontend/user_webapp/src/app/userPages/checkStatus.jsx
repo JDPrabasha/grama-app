@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideNav from "../components/sideNav";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -10,17 +10,22 @@ import { Breakpoint, BreakpointProvider } from "react-socks";
 import processingImage from "../../images/processing.svg";
 import pendingImage from "../../images/pending.svg";
 import completedImage from "../../images/completed.svg";
-
-//pending, processing, completed
+import noneImage from "../../images/none.svg";
+import Axios from "axios";
 
 function CheckStatus() {
   const arr = [
-    ["pending", pendingImage],
-    ["processing", processingImage],
-    ["completed", completedImage],
+    ["Your request is ", "pending", pendingImage],
+    ["Your request is ", "processing", processingImage],
+    ["Your request is ", "completed", completedImage],
+    ["No ", "requests", noneImage],
   ];
 
   const [textIndex, setTextIndex] = useState(0);
+
+  useEffect(() => {
+    // Axios.get("").then().catch();
+  }, []);
 
   return (
     <>
@@ -51,8 +56,8 @@ function CheckStatus() {
                 },
               }}
             >
-              Your request is{" "}
-              <span style={{ color: "#09ad58" }}> {arr[textIndex][0]}.</span>
+              {arr[textIndex][0]}
+              <span style={{ color: "#09ad58" }}> {arr[textIndex][1]}.</span>
             </Typography>
           </Grid>
 
@@ -65,7 +70,7 @@ function CheckStatus() {
           >
             <Breakpoint medium up>
               <img
-                src={arr[textIndex][1]}
+                src={arr[textIndex][2]}
                 style={{ maxWidth: "100%", width: "100%" }}
               />
             </Breakpoint>

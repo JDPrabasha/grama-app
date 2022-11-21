@@ -28,9 +28,6 @@ function ApplyCertificate() {
   };
 
   const handleSubmit = () => {
-    // const payload = {};
-    // Axios.post("", payload).then().catch();
-
     if (nic == "" || address == "" || image == "") {
       setOpen(true);
       setMode(1);
@@ -40,6 +37,9 @@ function ApplyCertificate() {
       console.log(nic);
       console.log(address);
       // console.log(image);
+
+      // const payload = {};
+      // Axios.post("", payload).then().catch();
     }
   };
 
@@ -71,7 +71,6 @@ function ApplyCertificate() {
             alignItems: { sm: "center" },
             width: { xs: "100%", md: "100%", lg: "100%" },
             ml: { xs: "14%", md: "0%" },
-            // backgroundColor: "red",
           }}
         >
           <Grid container>
