@@ -14,9 +14,8 @@ function dashboard() {
           display:"flex",
           bgcolor: "background.default",
           p: 3,
-          width: "75vw",
+          width: "70vw",
           ml: "22%",
-          marginTop:"6%"
         }}
       >
         <Stack>

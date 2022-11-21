@@ -14,6 +14,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import Stack from "@mui/material/Stack";
 import Model from "../components/Model";
 import Axios from "axios";
+import { Link, Redirect } from "react-router-dom";
 
 const columns = [
   { id: "nic", label: "NIC", minWidth: 120 },
