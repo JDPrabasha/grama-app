@@ -22,9 +22,8 @@ function requests() {
                         alignItems="center"
                         spacing={2}
                     >
-                        <img src={Check} width="90%" style={{ marginTop: 10 }} />
+                        <img src={Check} width="90%" style={{ marginTop: 2 }} />
                         <Button
-                            href='/admin/requests'
                             variant="contained"
                             sx={{
                                 backgroundColor: "#09ad58",
@@ -32,14 +31,15 @@ function requests() {
                                 ":hover": {
                                     backgroundColor: "#09914b",
                                 }
-                            }}>Check Requests
+                            }}>
+                            <Link to='/admin/requests' style={{textDecoration: 'none', color:'#fff'}}>Check Requests</Link>
                         </Button>
                     </Stack>
                 </Card>
             </Grid>
             <Grid container xs={6} justifyContent="flex-end">
                 <Grid container xs={6} justifyContent="flex-end">
-                    <Card sx={{ p: 4, backgroundColor: "#4c4c4c", width: "70%" }}>
+                    <Card sx={{ p: 2, backgroundColor: "#4c4c4c", width: "70%" }}>
 
                         <Grid container>
                             <Grid xs={10}>
@@ -55,7 +55,7 @@ function requests() {
 
                             </Grid>
                             <Grid xs={2}>
-                                <CheckCircleRoundedIcon sx={{ color: "#fff" }} fontSize="large" />
+                                <CheckCircleRoundedIcon sx={{ color: "#fff" }} />
                             </Grid>
                             <Grid mt={2}>
                                 <Typography
@@ -71,7 +71,7 @@ function requests() {
                     </Card>
                 </Grid>
                 <Grid container xs={6} justifyContent="flex-end">
-                    <Card sx={{ p: 4, backgroundColor: "#4c4c4c", width: "70%" }}>
+                    <Card sx={{ p: 2, backgroundColor: "#4c4c4c", width: "70%" }}>
                         <Grid container>
                             <Grid xs={10}>
                                 <Typography
@@ -86,7 +86,7 @@ function requests() {
 
                             </Grid>
                             <Grid xs={2}>
-                                <ErrorIcon sx={{ color: "#fff" }} fontSize="large" />
+                                <ErrorIcon sx={{ color: "#fff" }} />
                             </Grid>
                             <Grid mt={2}>
                                 <Typography
@@ -103,7 +103,7 @@ function requests() {
                 </Grid>
 
 
-                <Card sx={{ p: 4, mt: 2, backgroundColor: "#4c4c4c", width: "85%" }}>
+                <Card sx={{ p: 2, mt: 1, backgroundColor: "#4c4c4c", width: "85%" }}>
 
                     <Grid container>
                         <Grid xs={11}>
@@ -119,7 +119,7 @@ function requests() {
 
                         </Grid>
                         <Grid xs={1}>
-                            <FunctionsIcon sx={{ color: "#fff" }} fontSize="large" />
+                            <FunctionsIcon sx={{ color: "#fff" }} />
                         </Grid>
                         <Grid mt={2}>
                             <Typography
