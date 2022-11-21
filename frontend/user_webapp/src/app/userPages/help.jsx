@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Header from "../components/header";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import Axios from "axios";
 
-function help() {
+import Toast from "../components/Toast";
+
+function Help() {
+  const [issue, setIssue] = useState("");
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState(-1);
+
+  const handleSubmit = () => {
+    if (issue == "") {
+      setOpen(true);
+      setMode(1);
+    } else {
+      setMode(0);
+
+      // const payload = {};
+      // Axios.post("", payload).then().catch();
+    }
+  };
+
   return (
     <>
       <Header name={"Help"} />
@@ -67,6 +86,7 @@ function help() {
               multiline
               rows={5}
               sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
+              onChange={(newValue) => setIssue(newValue.target.value)}
             />
           </Grid>
         </Grid>
@@ -91,13 +111,15 @@ function help() {
                 lg: 12,
               },
             }}
+            onClick={() => handleSubmit()}
           >
             Submit
           </Button>
+          <Toast open={open} setOpen={setOpen} mode={mode} />
         </Grid>
       </Box>
     </>
   );
 }
 
-export default help;
+export default Help;
