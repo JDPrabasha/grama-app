@@ -8,7 +8,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 function dashboardNumbers(props) {
   return ( 
-    <Card sx={{ pt: 6, pb:6, backgroundColor: "#09ad58", width: "70vw", mt:2 , marginRight: "auto", marginLeft: "auto" }}>
+    <Card sx={{ pt: 2, pb:2, backgroundColor: "#09ad58", width: "70vw", mt:2 , marginRight: "auto", marginLeft: "auto" }}>
           <CardContent>
             <Stack direction='row' alignItems='center' justifyContent="space-around" divider={<Divider orientation="vertical" flexItem />}>
               <Stack>
