@@ -29,7 +29,9 @@ function help() {
             justifyContent: "center",
             alignContent: "center",
             alignItems: "center",
-            width: "100%",
+            // width: "100%",
+            width: { xs: "100%", md: "100%", lg: "100%" },
+            ml: { xs: "5%", md: "0%" },
           }}
         >
           <Grid container>
@@ -37,9 +39,18 @@ function help() {
               variant="h4"
               component="div"
               sx={{
-                mb: "3%",
+                mb: { xs: "20%", sm: "15%", md: "10%", lg: "5%" },
+                mt: { xs: "15%", sm: "0%", md: "0%" },
+                ml: { xs: "10%", md: "0%" },
+
                 fontWeight: 700,
                 fontFamily: "Segoe UI",
+                fontSize: {
+                  xs: 13,
+                  sm: 20,
+                  md: 30,
+                  lg: 34,
+                },
               }}
             >
               How can we <span style={{ color: "#09ad58" }}> help</span> you
@@ -55,7 +66,7 @@ function help() {
               size="small"
               multiline
               rows={5}
-              sx={{ width: "35vw", mb: 3 }}
+              sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
             />
           </Grid>
         </Grid>
@@ -64,7 +75,7 @@ function help() {
           <Button
             variant="outlined"
             sx={{
-              ml: "25%",
+              ml: { xs: "15%", sm: "14.5%" },
               mt: 1,
               width: "12vw",
               borderColor: "#09ad58",
@@ -72,6 +83,12 @@ function help() {
               ":hover": {
                 borderColor: "#09914b",
                 color: "#09ad58",
+              },
+              fontSize: {
+                xs: 9,
+                sm: 11,
+                md: 10,
+                lg: 12,
               },
             }}
           >

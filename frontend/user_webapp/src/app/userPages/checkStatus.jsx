@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Toolbar from "@mui/material/Toolbar";
 import Header from "../components/header";
 import { Grid } from "@mui/material";
+import { Breakpoint, BreakpointProvider } from "react-socks";
 
 import processingImage from "../../images/processing.svg";
 import pendingImage from "../../images/pending.svg";
@@ -40,9 +41,14 @@ function CheckStatus() {
               variant="h4"
               component="div"
               sx={{
-                mt: "40%",
+                mt: { xs: "70%", sm: "40%" },
+                ml: { xs: "55%", sm: "0%" },
                 fontWeight: 700,
                 fontFamily: "Segoe UI",
+                fontSize: {
+                  xs: 18,
+                  sm: 34,
+                },
               }}
             >
               Your request is{" "}
@@ -50,8 +56,30 @@ function CheckStatus() {
             </Typography>
           </Grid>
 
-          <Grid xs={5} sx={{ marginTop: "8%", pr: 5 }}>
-            <img src={arr[textIndex][1]} style={{ maxWidth: "100%" }} />
+          <Grid
+            xs={5}
+            sx={{
+              mt: { xs: "100%", sm: "8%" },
+              pr: 5,
+            }}
+          >
+            <Breakpoint medium up>
+              <img
+                src={arr[textIndex][1]}
+                style={{ maxWidth: "100%", width: "100%" }}
+              />
+            </Breakpoint>
+
+            <Breakpoint small down>
+              <img
+                src={arr[textIndex][1]}
+                style={{
+                  maxWidth: "300%",
+                  width: "300%",
+                  marginLeft: "-150%",
+                }}
+              />
+            </Breakpoint>
           </Grid>
         </Grid>
       </Box>

@@ -46,10 +46,17 @@ export default function PermanentDrawerLeft({ index }) {
             sx: {
               backgroundColor: "#4c4c4c ",
               color: "rgb(255 255 255 / 87%)",
+              pr: {
+                xs: "30%",
+                sm: "0%",
+              },
             },
           }}
           sx={{
-            width: drawerWidth,
+            width: {
+              sm: "10%",
+              lg: drawerWidth,
+            },
             flexShrink: 0,
             "& .MuiDrawer-paper": {
               width: drawerWidth,
@@ -61,7 +68,7 @@ export default function PermanentDrawerLeft({ index }) {
         >
           <Grid
             container
-            sx={{ marginTop: 4, marginBottom: 4 }}
+            sx={{ marginTop: 4, marginBottom: 4, ml: { xs: 2, sm: 0 } }}
             direction="column"
           >
             <Grid xs={4}>
@@ -73,6 +80,10 @@ export default function PermanentDrawerLeft({ index }) {
                   mt: 1,
                   marginLeft: "80%",
                   fontFamily: "Segoe UI",
+                  fontSize: {
+                    xs: 18,
+                    sm: 24,
+                  },
                 }}
               >
                 EzGrama
@@ -98,8 +109,9 @@ export default function PermanentDrawerLeft({ index }) {
                   disablePadding
                   sx={{
                     transition: "0.3s ease",
-                    height: "8vh",
-
+                    // height: "8vh",
+                    height: { xs: "12vh", sm: "8vh" },
+                    ml: { xs: -7, sm: 0 },
                     ":hover": {
                       backgroundColor: "#09ad58",
                       transition: "0.3s ease",
@@ -132,7 +144,11 @@ export default function PermanentDrawerLeft({ index }) {
             <Button
               variant="contained"
               sx={{
-                width: "130%",
+                width: { xs: "80%", sm: "130%" },
+                fontSize: {
+                  xs: 9,
+                  sm: 14,
+                },
                 backgroundColor: "#09ad58",
                 ":hover": {
                   backgroundColor: "#09914b",

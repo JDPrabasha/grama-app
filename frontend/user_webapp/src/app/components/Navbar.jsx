@@ -56,15 +56,41 @@ export default function HideAppBar(props) {
             <Container maxWidth="xl">
               <Grid container spacing={2}>
                 <Grid container xs={10}>
-                  <Grid xs={0.5}>
+                  <Grid xs={1}>
                     <img src={logo} style={{ height: "60px" }} />
                   </Grid>
 
-                  <Grid xs={11.5}>
+                  <Grid xs={11}>
                     <Typography
                       variant="h6"
                       component="div"
-                      sx={{ fontWeight: 500, mt: 1, ml: 2 }}
+                      sx={{
+                        fontWeight: 500,
+                        mt: {
+                          xs: 3,
+                          sm: 2,
+                          md: 1,
+                          lg: 2.5,
+                          xl: 2.5,
+                        },
+                        ml: {
+                          xs: 4,
+                          sm: 2,
+                          md: -2,
+                          lg: -2,
+                          xl: -6,
+                        },
+                        fontSize: {
+                          xs: 16,
+                          sm: 20,
+                          md: 24,
+                        },
+                        mr: {
+                          xs: 0,
+                          sm: 18,
+                          md: 30,
+                        },
+                      }}
                     >
                       EzGrama
                     </Typography>
@@ -74,11 +100,30 @@ export default function HideAppBar(props) {
                   <Button
                     variant="contained"
                     sx={{
-                      mr: 1,
+                      pl: {
+                        xs: "10%",
+                        sm: "0%",
+                      },
+
+                      pr: {
+                        xs: "10%",
+                        sm: "0%",
+                      },
                       mt: 1,
+                      fontSize: {
+                        xs: 10,
+                        sm: 14,
+                      },
                       backgroundColor: "#09ad58",
                       ":hover": {
                         backgroundColor: "#09914b",
+                      },
+                      width: {
+                        xs: "100%",
+                        sm: "130%",
+                        md: "75%",
+                        lg: "60%",
+                        xl: "50%",
                       },
                     }}
                     onClick={() => signIn()}

@@ -22,7 +22,8 @@ function header({ name }) {
           noWrap
           component="div"
           sx={{
-            ml: "21%",
+            ml: { xs: "32%", sm: "21%" },
+            fontSize: { xs: 20, sm: 28 },
             fontWeight: 600,
             fontFamily: "Segoe UI",
             color: "#000",
