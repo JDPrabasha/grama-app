@@ -4,7 +4,6 @@ import { Route, Redirect } from "react-router-dom";
 import SideNav from "../components/sideNav";
 import Dashboard from "../adminPages/dashboard";
 import Requests from "../adminPages/requests";
-import Document from "../adminPages/document";
 import { useAuthContext } from "@asgardeo/auth-react";
 
 import PuffLoader from "react-spinners/PuffLoader";
@@ -36,7 +35,6 @@ function Admin() {
       </Route>
       <Route path="/admin/dashboard" component={Dashboard} />
       <Route path="/admin/requests" component={Requests} />
-      <Route path="/admin/document" component={Document} />
     </>
   );
 }
