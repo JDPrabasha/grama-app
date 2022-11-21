@@ -162,33 +162,6 @@ export default function StickyHeadTable() {
                   </TableCell>
                 </TableRow>
               ))}
-            {/* {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column, index) => {
-                      return (
-                        <TableCell>
-                          <Stack direction="row" alignItems="center">
-                            <div
-                              style={{ cursor: "pointer" }}
-                              onClick={handleOpen}
-                            >
-                              {column}
-                              {console.log(column)}
-                            </div>
-                            <NavigateNextIcon
-                              fontSize="large"
-                              sx={{ color: "#757575" }}
-                            />
-                          </Stack>
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })} */}
           </TableBody>
         </Table>
       </TableContainer>
