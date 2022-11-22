@@ -9,7 +9,7 @@ root.render(
     config={{
       signInRedirectURL: "https://ezgrama-admin.vercel.app",
       signOutRedirectURL: "https://ezgrama-admin.vercel.app",
-      clientID: "qkNIUmZvuuai886RfrXaw8mOzoka",
+      clientID: "hpLlekXyxKEbkRyt4klCh5XAYBka",
       baseUrl: "https://api.asgardeo.io/t/ezgrama",
       scope: ["openid", "profile", "email"],
     }}
