@@ -34,11 +34,6 @@ function ApplyCertificate() {
     } else {
       setMode(0);
 
-      console.log(nic);
-      console.log(address);
-      console.log(image);
-      console.log(typeof image);
-
       const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
 
       const payload = {
