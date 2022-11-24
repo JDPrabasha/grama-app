@@ -97,11 +97,11 @@ app.get("/requests/:area", async (req, res) => {
   }
 });
 
-app.get("/status/:nic", async (req, res) => {
+app.get("/status/:email", async (req, res) => {
   try {
-    const nic = req.params.nic;
+    const email = req.params.email;
     const result = await request.findOne(
-      { nic: nic },
+      { email: email },
       { nic: 1, status: 1, policeVerification: 1, _id: 0 }
     );
     res.status(200).send(result);
