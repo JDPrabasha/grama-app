@@ -48,6 +48,7 @@ export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const rowsPerPage = "10";
   const [rows, setRows] = useState([]);
+  const [clickedImage, setClickedImage] = useState("");
 
   const config = {
     headers: {
@@ -55,7 +56,12 @@ export default function StickyHeadTable() {
     },
   };
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (index) => {
+    setClickedImage(rows[index][2]);
+    console.log(rows[index][2]);
+    console.log("rows[index][2]");
+    setOpen(true);
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -76,7 +82,7 @@ export default function StickyHeadTable() {
     )
       .then((res) => {
         console.log(res.data[0]);
-        const arr = res.data.map((row) => [row.nic, row.address]);
+        const arr = res.data.map((row) => [row.nic, row.address, row.proof]);
         setRows(arr);
       })
       .catch();
@@ -146,7 +152,7 @@ export default function StickyHeadTable() {
                   <TableCell
                     align="left"
                     style={{ cursor: "pointer" }}
-                    onClick={handleOpen}
+                    onClick={() => handleOpen(index)}
                   >
                     <ArticleIcon
                       fontSize="large"
@@ -203,7 +209,7 @@ export default function StickyHeadTable() {
         onPageChange={handleChangePage}
         // onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      <Model open={open} setOpen={setOpen} />
+      <Model open={open} setOpen={setOpen} base64Image={clickedImage} />
     </Paper>
   );
 }

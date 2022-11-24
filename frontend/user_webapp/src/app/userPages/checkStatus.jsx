@@ -12,6 +12,7 @@ import pendingImage from "../../images/pending.svg";
 import completedImage from "../../images/completed.svg";
 import noneImage from "../../images/none.svg";
 import Axios from "axios";
+import axiosInstance from "../config/axios";
 
 function CheckStatus() {
   const arr = [
@@ -24,7 +25,22 @@ function CheckStatus() {
   const [textIndex, setTextIndex] = useState(0);
 
   useEffect(() => {
-    // Axios.get("").then().catch();
+    const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
+
+    const config = {
+      headers: {
+        Authorization: accessToken,
+      },
+    };
+
+    Axios.get(
+      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/finalintegration/1.0.0/status",
+      config
+    )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch();
   }, []);
 
   return (

@@ -21,8 +21,28 @@ function Help() {
     } else {
       setMode(0);
 
-      // const payload = {};
-      // Axios.post("", payload).then().catch();
+      const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
+
+      const config = {
+        headers: {
+          Authorization: accessToken,
+        },
+      };
+
+      const payload = {
+        email: localStorage.getItem("email"),
+        message: issue,
+      };
+
+      Axios.post(
+        "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/finalintegration/1.0.0/help",
+        payload,
+        config
+      )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch();
     }
   };
 
