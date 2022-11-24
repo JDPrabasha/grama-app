@@ -46,7 +46,7 @@ function ApplyCertificate() {
         address: address,
         proof: image,
         key: accessToken,
-        email: "test@gmail.com",
+        email: localStorage.getItem("email"),
       };
 
       const config = {

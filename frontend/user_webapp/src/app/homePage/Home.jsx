@@ -65,6 +65,8 @@ function Home() {
         decodedIDTokenPayload: decodedIDToken,
       };
 
+      localStorage.setItem("email", basicUserInfo.email);
+
       setDerivedAuthenticationState(derivedState);
       console.log(derivedState);
 
@@ -87,7 +89,6 @@ function Home() {
 
           localStorage.setItem("API_TOKEN", resJson.access_token);
         });
-
     })();
   }, [state.isAuthenticated]);
 
