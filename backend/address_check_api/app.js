@@ -2,12 +2,12 @@
 const express = require("express");
 const db = require("./db/db");
 const request = require("./models/Request");
-const cors = require("cors");
+// const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 
 app.use(bodyParser.json({ limit: "50mb", extended: true }));
 

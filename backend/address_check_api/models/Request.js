@@ -24,7 +24,7 @@ const requestSchema = new Schema({
   },
   status: {
     type: String,
-    default: "Pending",
+    default: "Processing",
   },
 
   policeVerification: {
