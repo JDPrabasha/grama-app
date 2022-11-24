@@ -38,7 +38,7 @@ export default function BasicModal({ open, setOpen, base64Image }) {
         <Box sx={style}>
           <Grid container sx={{ justifyContent: "center", overflow: "auto" }}>
             <img
-              src={billImage}
+              src={base64Image}
               style={{ width: "100%", height: "85vh", maxHeight: "85vh" }}
             />
           </Grid>
