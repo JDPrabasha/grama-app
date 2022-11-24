@@ -15,12 +15,9 @@ const override = {
 };
 
 function Admin() {
-  // const { state, getBasicUserInfo, getIDToken, getDecodedIDToken } =
-  //   useAuthContext();
-
-  // if (!localStorage.getItem("stateKey")) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!localStorage.getItem("stateKey")) {
+    return <Redirect to="/" />;
+  }
 
   // if (state.isLoading) {
   //   return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;

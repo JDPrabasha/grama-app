@@ -127,6 +127,7 @@ function ApplyCertificate() {
               label="NIC or Passport ID"
               variant="outlined"
               size="small"
+              value={nic}
               onChange={(newValue) => setNIC(newValue.target.value)}
               sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
             />
@@ -140,6 +141,7 @@ function ApplyCertificate() {
               size="small"
               multiline
               rows={5}
+              value={address}
               onChange={(newValue) => setAddress(newValue.target.value)}
               sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
             />
