@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
+
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -42,41 +43,69 @@ const columns = [
   },
 ];
 
-function createData(nic, address, more) {
-  //const density = population / size;
-  return { nic, address, more };
-}
-
-const rows = [
-  ["123666908234", "35, Odio Avenue, Colombo", " View Document"],
-  ["732348956v", "40, Galle Road, Matara", " View Document"],
-  ["988331229V", "22, Flower Road,Kandy", " View Document"],
-  ["123666908234", "35, Odio Avenue, Colombo", " View Document"],
-  ["732348956v", "40, Galle Road, Matara", " View Document"],
-  ["988331229V", "22, Flower Road,Kandy", " View Document"],
-  ["123666908234", "35, Odio Avenue, Colombo", " View Document"],
-  ["732348956v", "40, Galle Road, Matara", " View Document"],
-  ["988331229V", "22, Flower Road,Kandy", " View Document"],
-  ["123666908234", "35, Odio Avenue, Colombo", " View Document"],
-  ["732348956v", "40, Galle Road, Matara", " View Document"],
-  ["988331229V", "22, Flower Road,Kandy", " View Document"],
-  ["123666908234", "35, Odio Avenue, Colombo", " View Document"],
-  ["732348956v", "40, Galle Road, Matara", " View Document"],
-  ["988331229V", "22, Flower Road,Kandy", " View Document"],
-  ["123666908234", "35, Odio Avenue, Colombo", " View Document"],
-  ["732348956v", "40, Galle Road, Matara", " View Document"],
-  ["988331229V", "22, Flower Road,Kandy", " View Document"],
-];
-
 export default function StickyHeadTable() {
   const [open, setOpen] = React.useState(false);
   const [page, setPage] = React.useState(0);
   const rowsPerPage = "10";
+  const [rows, setRows] = useState([]);
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("API_TOKEN"),
+    },
+  };
 
   const handleOpen = () => setOpen(true);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+
+  const updateData = (nic) => {
+    const newRows = rows.filter((row) => row[0] != nic);
+    setRows(newRows);
+  };
+
+  useEffect(() => {
+    const gramaArea = localStorage.getItem("area");
+
+    Axios.get(
+      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/requests/" +
+        gramaArea,
+      config
+    )
+      .then((res) => {
+        console.log(res.data[0]);
+        const arr = res.data.map((row) => [row.nic, row.address]);
+        setRows(arr);
+      })
+      .catch();
+  }, []);
+
+  const handleAccept = (nic) => {
+    const url =
+      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/confirm" +
+      nic;
+
+    Axios.put(url, {}, config)
+      .then((res) => {
+        console.log(res);
+        if (res.status == 201) updateData(nic);
+      })
+      .catch();
+  };
+
+  const handleReject = (nic) => {
+    const url =
+      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/missing" +
+      nic;
+
+    Axios.put(url, {}, config)
+      .then((res) => {
+        console.log(res);
+        if (res.status == 201) updateData(nic);
+      })
+      .catch();
   };
 
   return (
@@ -132,7 +161,7 @@ export default function StickyHeadTable() {
                   <TableCell
                     align="left"
                     style={{ cursor: "pointer" }}
-                    onClick={handleOpen}
+                    onClick={() => handleAccept(row[0])}
                   >
                     <CheckIcon
                       fontSize="large"
@@ -148,7 +177,7 @@ export default function StickyHeadTable() {
                   <TableCell
                     align="left"
                     style={{ cursor: "pointer" }}
-                    onClick={handleOpen}
+                    onClick={() => handleReject(row[0])}
                   >
                     <DangerousIcon
                       fontSize="large"

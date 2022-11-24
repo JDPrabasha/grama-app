@@ -47,6 +47,8 @@ function Login() {
       setDerivedAuthenticationState(derivedState);
       console.log(derivedState);
 
+      localStorage.setItem("area", basicUserInfo.Area);
+
       fetch("https://sts.choreo.dev/oauth2/token", {
         body:
           "grant_type=urn:ietf:params:oauth:grant-type:token-exchange&subject_token=" +
@@ -54,15 +56,18 @@ function Login() {
           "&subject_token_type=urn:ietf:params:oauth:token-type:jwt&requested_token_type=urn:ietf:params:oauth:token-type:jwt",
         headers: {
           Authorization:
-            "Basic VmhnbjEzMXI4Y0lnRjNTeGFlYlFzdnZJMnlBYTppZDFTVmI5WW5XNG4xUzM5cUpLRUhpU08wX1Vh",
+            "Basic eDA1QjM1V2ZjNmZwdlZ4ZWVBdDBYQk12bm5jYTpsRTg3ZmVUNndGdDNEZmVyU0NMNVYySzl0Qzhh",
           "Content-Type": "application/x-www-form-urlencoded",
         },
         method: "POST",
       })
         .then((response) => response.json())
-        .then((resJson) =>
-          localStorage.setItem("API_TOKEN", JSON.stringify(resJson))
-        );
+        .then((resJson) => {
+          console.log("resJson");
+          console.log(resJson.access_token);
+
+          localStorage.setItem("API_TOKEN", resJson.access_token);
+        });
     })();
   }, [state.isAuthenticated]);
 

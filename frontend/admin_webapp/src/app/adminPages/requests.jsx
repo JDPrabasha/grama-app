@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Table from "../components/reqTable";
+import Axios from "axios";
 
-
-function requests() {
+function Requests() {
   return (
     <>
       <Header name={"Requests"} />
-      <Box 
+      <Box
         component="main"
         sx={{
           flexGrow: 1,
@@ -28,4 +28,4 @@ function requests() {
   );
 }
 
-export default requests;
+export default Requests;
