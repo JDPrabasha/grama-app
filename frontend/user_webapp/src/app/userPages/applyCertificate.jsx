@@ -36,10 +36,34 @@ function ApplyCertificate() {
 
       console.log(nic);
       console.log(address);
-      // console.log(image);
+      console.log(image);
+      console.log(typeof image);
 
-      // const payload = {};
-      // Axios.post("", payload).then().catch();
+      const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
+
+      const payload = {
+        nic: nic,
+        address: address,
+        proof: image,
+        key: accessToken,
+        email: "test@gmail.com",
+      };
+
+      const config = {
+        headers: {
+          Authorization: accessToken,
+        },
+      };
+
+      Axios.post(
+        "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/finalintegration/1.0.0/add",
+        payload,
+        config
+      )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch();
     }
   };
 
