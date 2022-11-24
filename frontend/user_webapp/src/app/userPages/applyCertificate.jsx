@@ -35,7 +35,6 @@ function ApplyCertificate() {
       setMode(0);
 
       const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
-
       const payload = {
         nic: nic,
         address: address,
