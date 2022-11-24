@@ -3,7 +3,6 @@ import Header from "../components/header";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Table from "../components/reqTable";
-import Axios from "axios";
 
 function Requests() {
   return (

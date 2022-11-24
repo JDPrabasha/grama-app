@@ -57,6 +57,9 @@ function ApplyCertificate() {
       )
         .then((res) => {
           console.log(res);
+          setNIC("");
+          setAddress("");
+          setImage("");
         })
         .catch();
     }

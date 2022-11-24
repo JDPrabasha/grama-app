@@ -33,12 +33,19 @@ function CheckStatus() {
       },
     };
 
-    Axios.get(
+    const payload = {
+      email: localStorage.getItem("email"),
+      key: accessToken,
+    };
+
+    Axios.post(
       "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/finalintegration/1.0.0/status",
+      payload,
       config
     )
       .then((res) => {
         console.log(res);
+        console.log(res.data);
       })
       .catch();
   }, []);
