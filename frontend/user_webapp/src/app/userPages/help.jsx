@@ -41,6 +41,7 @@ function Help() {
       )
         .then((res) => {
           console.log(res);
+          setIssue("");
         })
         .catch();
     }
