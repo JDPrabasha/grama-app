@@ -16,10 +16,10 @@ import axiosInstance from "../config/axios";
 
 function CheckStatus() {
   const arr = [
-    ["Your request is ", "pending", pendingImage],
+    ["No ", "requests", noneImage],
     ["Your request is ", "processing", processingImage],
     ["Your request is ", "completed", completedImage],
-    ["No ", "requests", noneImage],
+    // ["Your request is ", "completed", completedImage],
   ];
 
   const [textIndex, setTextIndex] = useState(0);
@@ -44,8 +44,10 @@ function CheckStatus() {
       config
     )
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
+        if (res.data.status === "Processing") setTextIndex(1);
+        else if (res.data.status === "Confirmed") setTextIndex(2);
+        else if (res.data.status === "Missing Info") setTextIndex(3);
+        else setTextIndex(0);
       })
       .catch();
   }, []);
