@@ -73,7 +73,7 @@ function ApplyCertificate() {
 
           const myTimeout = setTimeout(() => {
             window.location.reload();
-          }, 3000);
+          }, 6000);
         })
         .catch((err) => {
           setSpinnerLloading(false);
