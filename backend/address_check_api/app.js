@@ -119,7 +119,11 @@ app.get("/status/:email", async (req, res) => {
       { email: email },
       { nic: 1, status: 1, policeVerification: 1, _id: 0 }
     );
-    res.status(200).send(result);
+    if (result) {
+      res.status(200).send(result);
+    } else {
+      res.status(200).send("No results found");
+    }
   } catch (err) {
     res.status(500).send(err);
   }
