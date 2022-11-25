@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import SideNav from "../components/sideNav";
 import ApplyCertificate from "../userPages/applyCertificate";
@@ -7,8 +7,18 @@ import Help from "../userPages/help";
 import ErrorPage from "../homePage/errorPage";
 import { useAuthContext } from "@asgardeo/auth-react";
 import Axios from "axios";
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  marginTop: "18%",
+  marginLeft: "53%",
+};
 
 function Users() {
+  const [loadingScreen, setLoadingScreen] = useState(true);
+
   useEffect(() => {
     const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
 
@@ -29,14 +39,18 @@ function Users() {
       config
     )
       .then((res) => {
-        // setSpinnerLloading(false);
         localStorage.setItem("reqStatus", res.data.status);
+        setSpinnerLloading(false);
       })
       .catch();
   }, []);
 
-  if (!localStorage.getItem("stateKey")) {
+  if (!localStorage.getItem("stateKey") && loadingScreen) {
     return <Redirect to="/" />;
+  }
+
+  if (loadingScreen) {
+    return <PuffLoader color="#09ad58" size={100} cssOverride={override} />;
   }
 
   if (
@@ -46,7 +60,7 @@ function Users() {
   ) {
     return (
       <>
-        <SideNav index={0} reqSent={1} />
+        <SideNav index={0} />
         <Route path="/user">
           <Redirect to="/user/status" />
         </Route>
@@ -58,7 +72,7 @@ function Users() {
 
   return (
     <>
-      <SideNav index={0} reqSent={0} />
+      <SideNav index={0} />
       <Route path="/user">
         <Redirect to="/user/apply-certificate" />
       </Route>

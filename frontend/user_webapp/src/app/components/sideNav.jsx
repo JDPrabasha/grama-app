@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -28,7 +28,9 @@ const navigationNames = [
   ],
 ];
 
-export default function PermanentDrawerLeft({ index, reqSent }) {
+export default function PermanentDrawerLeft({ index }) {
+  const [reqSent, setReqSent] = useState(-1);
+
   const { signOut } = useAuthContext();
 
   const handleLogout = () => {
@@ -37,6 +39,10 @@ export default function PermanentDrawerLeft({ index, reqSent }) {
 
     return <Redirect to="/" />;
   };
+
+  useEffect(() => {
+    setReqSent(localStorage.getItem("reqStatus"));
+  }, []);
 
   if (reqSent == 0) {
     return (
