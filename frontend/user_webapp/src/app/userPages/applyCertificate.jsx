@@ -8,6 +8,14 @@ import { Typography } from "@mui/material";
 import Axios from "axios";
 
 import Toast from "../components/Toast";
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  marginTop: "18%",
+  marginLeft: "53%",
+};
 
 function ApplyCertificate() {
   const [nic, setNIC] = useState("");
@@ -16,6 +24,8 @@ function ApplyCertificate() {
 
   const [open, setOpen] = React.useState(false);
   const [mode, setMode] = React.useState(-1);
+
+  const [spinnerLoading, setSpinnerLloading] = useState(false);
 
   const convertBase64 = (e) => {
     const file = e.target.files[0];
@@ -33,6 +43,7 @@ function ApplyCertificate() {
       setMode(1);
     } else {
       setMode(0);
+      setSpinnerLloading(true);
 
       const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
       const payload = {
@@ -59,10 +70,22 @@ function ApplyCertificate() {
           setNIC("");
           setAddress("");
           setImage("");
+          window.location.reload();
         })
-        .catch();
+        .catch((err) => {
+          setSpinnerLloading(false);
+        });
     }
   };
+
+  if (spinnerLoading) {
+    return (
+      <>
+        <PuffLoader color="#09ad58" size={100} cssOverride={override} />
+        <Toast open={open} setOpen={setOpen} mode={mode} />
+      </>
+    );
+  }
 
   return (
     <>
