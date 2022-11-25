@@ -102,8 +102,9 @@ app.put("/:nic", async (req, res) => {
 app.get("/requests/:area", async (req, res) => {
   try {
     const area = req.params.area;
+    const status = req.query.status;
     const requests = await request.find(
-      { area: area, policeVerification: true, status: "Processing" },
+      { area: area, policeVerification: true, status: status },
       { _id: 0, __v: 0 }
     );
     res.status(200).send(requests);
