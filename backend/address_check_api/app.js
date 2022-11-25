@@ -125,6 +125,19 @@ app.get("/status/:email", async (req, res) => {
   }
 });
 
+app.get("/exists/:nic", async (req, res) => {
+  try {
+    const nic = req.params.nic;
+    const result = await request.findOne(
+      { nic: nic },
+      { nic: 1, status: 1, policeVerification: 1, _id: 0 }
+    );
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 //requires nic and address
 app.post("/", async (req, res) => {
   try {
