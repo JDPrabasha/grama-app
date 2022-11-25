@@ -40,12 +40,12 @@ function Users() {
     )
       .then((res) => {
         localStorage.setItem("reqStatus", res.data.status);
-        setSpinnerLloading(false);
+        setLoadingScreen(false);
       })
       .catch();
   }, []);
 
-  if (!localStorage.getItem("stateKey") && loadingScreen) {
+  if (!localStorage.getItem("stateKey")) {
     return <Redirect to="/" />;
   }
 
