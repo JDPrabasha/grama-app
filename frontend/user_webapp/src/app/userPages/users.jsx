@@ -12,8 +12,10 @@ import PuffLoader from "react-spinners/PuffLoader";
 const override = {
   display: "block",
   margin: "0 auto",
-  marginTop: "18%",
-  marginLeft: "53%",
+  // marginTop: "18%",
+  // marginLeft: "53%",
+
+  marginTop: "20%",
 };
 
 function Users() {
@@ -55,7 +57,7 @@ function Users() {
 
   if (
     localStorage.getItem("reqStatus") === "Processing" ||
-    localStorage.getItem("reqStatus") === "Confirmed" ||
+    // localStorage.getItem("reqStatus") === "Confirmed" ||
     localStorage.getItem("reqStatus") === "Missing Info"
   ) {
     return (

@@ -41,7 +41,9 @@ export default function PermanentDrawerLeft({ index }) {
   };
 
   useEffect(() => {
-    setReqSent(localStorage.getItem("reqStatus"));
+    const reqS = localStorage.getItem("reqStatus");
+    if (reqS == "Processing" || reqS == "Missing Info") setReqSent(1);
+    else setReqSent(0);
   }, []);
 
   if (reqSent == 0) {
