@@ -70,10 +70,11 @@ function ApplyCertificate() {
           setNIC("");
           setAddress("");
           setImage("");
+          setSpinnerLloading(false);
 
-          const myTimeout = setTimeout(() => {
-            window.location.reload();
-          }, 6000);
+          // const myTimeout = setTimeout(() => {
+          //   window.location.reload();
+          // }, 6000);
         })
         .catch((err) => {
           setSpinnerLloading(false);
