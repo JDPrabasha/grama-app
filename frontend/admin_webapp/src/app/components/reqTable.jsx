@@ -78,7 +78,7 @@ export default function StickyHeadTable() {
     Axios.get(
       "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/requests/" +
         gramaArea +
-        "/status=Processing",
+        "?status=Processing",
       config
     )
       .then((res) => {
