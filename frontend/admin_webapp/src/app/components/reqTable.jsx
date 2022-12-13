@@ -91,7 +91,7 @@ export default function StickyHeadTable() {
 
   const handleAccept = (nic) => {
     const url =
-      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/confirm" +
+      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/confirm/" +
       nic;
 
     Axios.put(url, {}, config)
@@ -104,7 +104,7 @@ export default function StickyHeadTable() {
 
   const handleReject = (nic) => {
     const url =
-      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/missing" +
+      "https://8659e866-c03e-45d5-a713-14c3f8f0d831-dev.e1-us-east-azure.choreoapis.dev/vjmx/therealaddresscheckapi/1.0.0/missing/" +
       nic;
 
     Axios.put(url, {}, config)
