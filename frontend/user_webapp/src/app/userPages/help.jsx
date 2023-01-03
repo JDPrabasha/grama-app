@@ -20,6 +20,7 @@ function Help() {
       setMode(1);
     } else {
       setMode(0);
+      setIssue("");
 
       const accessToken = "Bearer " + localStorage.getItem("API_TOKEN");
 
@@ -107,6 +108,7 @@ function Help() {
               multiline
               rows={5}
               sx={{ width: { xs: "57vw", sm: "50vw" }, mb: 3 }}
+              value={issue}
               onChange={(newValue) => setIssue(newValue.target.value)}
             />
           </Grid>
